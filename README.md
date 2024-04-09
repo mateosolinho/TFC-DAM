@@ -1,6 +1,7 @@
 # Curso React Mateo Soliño
 
 ## <ins> Semana 09/04 </ins>
+## Fundamentos y Origen
 ### Sistemas de diseño, patrones y componentes: 
 El diseño "interno" de React se divide en Layout, Lógica y Estilos. Actualmente la arquitectura del frontend se basa en el encapsulamiento, hay un archivo de estilos, uno de lógica común, y por cada bloque llamado página existe un apartado de layout y otro de lógica propia.
 
@@ -9,8 +10,6 @@ La encapsulación se basa en separar los tres "pilares" en componentes, en esos 
 
 ### Atomic Desing:
 Este diseño se basa en que toda interfaz se puede dividir en diferentes combinaciones de elementos, la unidad más básica, los átomos, la combinación de estos dan lugar a moleculas, que a su vez combinada dan lugar a organismos, que si se juntan de nuevo dan lugar a templates que si se juntan de nuevo dana lugar a páginas. Ejemplo de átomos: Labels, buttons, inputs.
-
-![imagen](https://github.com/mateosolinho/proyecto-final/assets/124877302/712abe9f-c761-4369-add4-7149c2c70a28)
 
 ## JavaScript moderno 
 ### Identificadores:
@@ -50,4 +49,43 @@ Siguiendo la estructura de una arrow function, en el siguiente ejemplo se puede 
 
 ```js
 const getFullName = ({ name, surname }) => `${name} ${surname}`;
+
+console.log("getFullName:" , getFullName(user))
 ```
+Otra manera de hacerlo sería la siguiente:
+```js
+const { name, surname } = user;
+
+console.log(user) 
+```
+
+Gracias a la destructuración tambien podemos darle un nuevo valor a una clave de un objeto:
+```js
+const { name: newName } = newUser;
+
+console.log("newName:" , newName)
+```
+
+Destructuración de los parametros de una función:
+```js
+const sum = {...nums} =>
+  nums.reduce((total, num) => total + num, 0);
+
+console.log("sum:", sum(1, 2, 3, 4, 5, 6, 7, 8, 9));
+```
+
+### Clases y módulos:
+En el caso de las clases y la orientación a objetos gran parte de los contenidos es igual que en Java
+Lo único a destacar es que el en cada clase solo puede haber un export default, pero puede haber varios exports nombrados.
+Al hacer un export en la clase en la que lo quiera utilizar debo usar un import.
+
+## Anatomía de React
+### Reconciliación:
+Proceso en el cual React intenta optimizar el renderizado que va a realizar a posterior.
+Esto es así gracias al uso del DOM y posteriormente al Virtual DOM
+
+### Renderización:
+React se encarga del tratamiento del Virtual DOM, captura de eventos, etc
+React DOM/Native/Vr se encarga del renderizado
+
+## Crear una aplicación en React
