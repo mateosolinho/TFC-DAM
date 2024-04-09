@@ -89,3 +89,71 @@ React se encarga del tratamiento del Virtual DOM, captura de eventos, etc
 React DOM/Native/Vr se encarga del renderizado
 
 ## Crear una aplicación en React
+Instalar node.js:
+```bash
+https://nodejs.org
+```
+
+Instalar nvm (Puede ser tanto para Windows como para Linux)
+
+Inicializar proyecto
+```bash
+npm init
+```
+
+Instalar React en el proyecto:
+```bash
+npm install --save react
+```
+
+Instalar empaquetador:
+```bash
+npm install --save-dev parcel-bundler
+```
+
+Podemos definir scripts en el package.json:
+```js
+"scripts" : {
+  "start" : "parcel index.html"
+},
+```
+
+Lanzar el script:
+```bash
+npm start
+```
+
+Instalar React DOM:
+```bash
+npm install --save react-dom
+```
+
+Creamos un fichero index.jsx y le añadimos lo siguiente:
+```js
+import React from "react";
+import ReactDOM from "react-dom";
+
+ReactDOM.render(<div> Mi wishlist </div>, document.getElementById("root"));
+```
+
+=======================
+Podemos agrupar las carpetas en tres tipos:
+- Carpetas por tipos
+- Carpetas por Features
+- Carpetas bien definidas y por tipos
+=======================
+
+Instalar ESLint globally
+```bash
+npm install -g eslint
+```
+
+Inicializar ESLint
+```bash
+eslint --init
+```
+
+Instalar Prettier:
+```bash
+npm install --dev prettier
+```
