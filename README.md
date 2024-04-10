@@ -157,3 +157,4 @@ Instalar Prettier:
 ```bash
 npm install --dev prettier
 ```
+***Hoy he intentado hacer el examen, en la primera he acertado 12 y en la segunda 18***
