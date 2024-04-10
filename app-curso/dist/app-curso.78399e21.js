@@ -28837,14 +28837,131 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"index.jsx":[function(require,module,exports) {
+},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+var bundleURL = null;
+function getBundleURLCached() {
+  if (!bundleURL) {
+    bundleURL = getBundleURL();
+  }
+  return bundleURL;
+}
+function getBundleURL() {
+  // Attempt to find the URL of the current script and use that as the base URL
+  try {
+    throw new Error();
+  } catch (err) {
+    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
+    if (matches) {
+      return getBaseURL(matches[0]);
+    }
+  }
+  return '/';
+}
+function getBaseURL(url) {
+  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)?\/[^/]+(?:\?.*)?$/, '$1') + '/';
+}
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+},{}],"node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+var bundle = require('./bundle-url');
+function updateLink(link) {
+  var newLink = link.cloneNode();
+  newLink.onload = function () {
+    link.remove();
+  };
+  newLink.href = link.href.split('?')[0] + '?' + Date.now();
+  link.parentNode.insertBefore(newLink, link.nextSibling);
+}
+var cssTimeout = null;
+function reloadCSS() {
+  if (cssTimeout) {
+    return;
+  }
+  cssTimeout = setTimeout(function () {
+    var links = document.querySelectorAll('link[rel="stylesheet"]');
+    for (var i = 0; i < links.length; i++) {
+      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
+        updateLink(links[i]);
+      }
+    }
+    cssTimeout = null;
+  }, 50);
+}
+module.exports = reloadCSS;
+},{"./bundle-url":"node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"src/App/App.css":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"src/App/App.jsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _react = _interopRequireDefault(require("react"));
+require("./App.css");
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var wishes = [{
+  text: "Travel to the moon",
+  done: false
+}, {
+  text: "Pay the gym",
+  done: true
+}, {
+  text: "Go to the gym",
+  done: false
+}];
+var App = function App() {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "app"
+  }, /*#__PURE__*/_react.default.createElement("h1", null, "My Wishlist"), /*#__PURE__*/_react.default.createElement("fieldset", {
+    className: "wish-input"
+  }, /*#__PURE__*/_react.default.createElement("legend", {
+    className: "wish-input__label"
+  }, "New Wish"), /*#__PURE__*/_react.default.createElement("input", {
+    className: "wish-input_field",
+    placeholder: "Enter what do you wish here"
+  })), /*#__PURE__*/_react.default.createElement("ul", {
+    className: "wish-list"
+  }, wishes.map(function (_ref, i) {
+    var text = _ref.text,
+      done = _ref.done;
+    return /*#__PURE__*/_react.default.createElement("li", {
+      key: text,
+      className: "wish-list__item ".concat(done ? 'wish-list__item--done' : '')
+    }, /*#__PURE__*/_react.default.createElement("label", {
+      htmlFor: "wish".concat(i)
+    }, /*#__PURE__*/_react.default.createElement("input", {
+      id: "whis".concat(i),
+      type: "checkbox",
+      checked: done
+    }), text));
+  })), /*#__PURE__*/_react.default.createElement("button", {
+    className: "wish-clear",
+    type: "button"
+  }, "Archive done"));
+};
+var _default = exports.default = App;
+},{"react":"node_modules/react/index.js","./App.css":"src/App/App.css"}],"src/App/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _App = _interopRequireDefault(require("./App"));
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _default = exports.default = _App.default;
+},{"./App":"src/App/App.jsx"}],"index.jsx":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
 var _reactDom = _interopRequireDefault(require("react-dom"));
+var _App = _interopRequireDefault(require("./src/App"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-_reactDom.default.render( /*#__PURE__*/_react.default.createElement("div", null, " Mi wishlist from React "), document.getElementById("root"));
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+_reactDom.default.render( /*#__PURE__*/_react.default.createElement(_App.default, null), document.getElementById("root"));
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./src/App":"src/App/index.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -28869,7 +28986,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53785" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54791" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

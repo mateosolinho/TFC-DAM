@@ -1,4 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import App from './src/App';
 
-ReactDOM.render(<div> Mi wishlist from React </div>, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById("root"));
