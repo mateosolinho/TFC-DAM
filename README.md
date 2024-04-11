@@ -1,7 +1,7 @@
 # Curso React Mateo Soliño
 
 ## <ins> Semana 09/04 </ins>
-## Fundamentos y Origen
+
 ### Sistemas de diseño, patrones y componentes: 
 El diseño "interno" de React se divide en Layout, Lógica y Estilos. Actualmente la arquitectura del frontend se basa en el encapsulamiento, hay un archivo de estilos, uno de lógica común, y por cada bloque llamado página existe un apartado de layout y otro de lógica propia.
 
@@ -157,4 +157,33 @@ Instalar Prettier:
 ```bash
 npm install --dev prettier
 ```
-***Hoy he intentado hacer el examen, en la primera he acertado 12 y en la segunda 18***
+***Examen***
+**Intento 1 -> 12 aciertos**
+**Intento 2 -> 18 aciertos**
+
+## Comunicación con el servidor
+Una web clásica se basa en un servidor estático que puede estar en cualquier sitio, cuando al servidor le llega una petición la procesa y le devuelve al navegador una respuesta en HTML, el navegador es el que se encarga de la renderización; esto es un problema ya que toda la carga del renderizado se la lleva el servidor
+
+AJAX es un conjunto de tecnologías que permite actualizar el contenido de una página sin necesidad de recargarla. El propio motor de AJAX es quien comunica con el servidor y delega la respuesta a JavaScript.
+
+En cuanro a peticiones, un POST es permite introducir crácteres ilimitados, mientras que si lo hacemos con GET serían limitados a 200 que equivale a las "/" de las URL
+
+Los dos tipos principales de peticiones o request más usadas son las tipo POST
+y las tipo GET, ambas tienen limitaciones distintas.
+Las peticiones GET tienen dirección, cabeceras, y parámetros mientras que
+las POST aparte de esto también tienen body (o cuerpo).
+Las peticiones con Fetch están compuestas por un objeto init con unas
+cabeceras Headers y devuelven una respuesta en formato Response.
+El éxito de una petición dependerá tanto de elegir correctamente las
+cabeceras como del envío del body así como del procesamiento de la
+respuesta.
+
+Un servicio en front-end son un punto intermedio entre nuestro servicio backend y nuestra aplicación o compoenete, este coge la información que emite el backend y la transforma en una información útil para nuestra aplicación.
+
+Un modelo de front es una representación abstracta de la entidad de backend con una orientación a la renderización del contenido.
+
+Un servicio front-end consume información de un backend y simplifica el proceso de consumo del servidor.
+
+Los modelos de front-end no tienen porqué coincidir con los de back-end, y pueden disponer de métodos que nos faciliten su uso.
+
+Un interceptor es uan función que procesa la respuesta o el envio de una petición y añade funcionalidad global para cualquiera que se realice.
