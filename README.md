@@ -157,6 +157,9 @@ Instalar Prettier:
 ```bash
 npm install --dev prettier
 ```
+**Wishlist React**
+Las tres últimas clases del curso se basaban en hacer una app con React usando componentes, react-dom, arrow functiones, etc, aunque hay cosas en el video que a día de hoy están deprecated, o no funcionan.
+
 ***Examen***
 **Intento 1 -> 12 aciertos**
 **Intento 2 -> 18 aciertos**
@@ -187,3 +190,65 @@ Un servicio front-end consume información de un backend y simplifica el proceso
 Los modelos de front-end no tienen porqué coincidir con los de back-end, y pueden disponer de métodos que nos faciliten su uso.
 
 Un interceptor es uan función que procesa la respuesta o el envio de una petición y añade funcionalidad global para cualquiera que se realice.
+
+## Rutas, navegación y portales
+
+Llamamos Router en react a un componente que muestra u oculta condicionalmente nuestars vistas, administrando la URL y sin realizar una recarga
+
+La librería de react-router es a día de hoy la más usada y gestiona los porblemas habituales del routing de manera liviana
+
+El routing de forma general, y especificamente para esta librería se divide en switchs y rutas
+
+El routing en una aplicación también implica una gestión de la navegación y una forma de recuperar y manipular el historial
+
+La API de HTML5 History nos permite manipular el historial del navegador sin etener que realizar cargas o recargas reales del contenido
+
+React router implementa una versión propia de la API de History del navegador que además es compatible con otros navegadores desactualizados
+
+La navegación programática es posible en React gracias a la inyección de propiedades del router y el uso de hooks
+
+Llamamos Portal a un componente de React que nos permite respetar la jerarquía de componentes mientras nos proporciona libertad para renderizar en cualquier punto del DOM
+
+Los portales son usados en casos como modales, diálogos, tolltips y demás elementos entorpecidos por el z-index o sensibles a la posición en el DOM
+
+Pese a encontrarse en puntos del DOM diferentes, se respetan las consecuencias de la jerarquía de componentes de React, incluyendo en la propagación de eventos
+
+## Abstracción de funcionalidades
+
+Un HOC está basado en el concepto de función de alto nivel de Javascript (HOF) y consiste en un componente que devuelve otro componente
+
+Los HOC se dedican principalmente a solucionar preocupaciones transversales, esto es, características comunes que afectann a varias partes de la aplicación
+
+Para facilitar el desarrollo y trazabilidad es recomendable seguir unas convenciones respecto al uso de HOCs
+
+Las render props son componentes que entran por propiedades de otros componentes y realizan su renderización, recibiendo parámetros del primero
+
+Tanto las HOC con las render props son usadas para solucionar preocupaciones transversales, son complementarias y combinables
+
+Las render props no tienen que ser únicas por componente y el nombre de la propiedad puede ser arbitrario
+
+Los Hooks de React permiten a los componentes funcionales adquirir la funcionalidad ausente anteriormente de los componentes de clase
+
+Las funcionalidades incluyen estado, gestión de efectos secundarios y acceso a los contextos existentes de React
+
+Usando Hooks de efecto también es posible replicar de manera completa el ciclo de vida disponible en los componenytes de clase
+
+## Gestión de estado
+
+Las aplicaciones en React funcionan por diseño pasando las propiedades verticalmente hacia abajo, encascada, y realizando cambios por callbacks
+
+La comunicación horizontal no es necesariamente frecuente pero es un caso complicado para la gestión habitual del estado en React
+
+Existen múltiples soluciones para compartir el estado, algunas de ellas incluso nativas del propio navegador
+
+Existen varios patrones de centralizado del estado, pero generalmente sólo varían en el flujo de acción y se basan en principios similares
+
+El patrón Redux se basa en crear una única fuente de verdad en la aplicación, únicamente de sólo lectura y modificable a través de acciones controladas
+
+El hook useReducer nos permite implementar nativamente en la librrería patrones de gestión del estado como Redux
+
+Favorecer la cascada y mantener el mínimo posible de componentes con estado o stateFull simlifica la gestión del estado en puntos controlables
+
+Mantener los componentes puros, cuando sea posible, no sólo favorece a la cascada sino que nos permite introducir optimizaciones de la librería
+
+Centralizar el estado puede ser positivo incluso aunque no se use un patrón concreto, simplemente tener alguna estrategia simplificaría el desarrollo
