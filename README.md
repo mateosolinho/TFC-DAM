@@ -160,9 +160,11 @@ npm install --dev prettier
 **Wishlist React**
 Las tres últimas clases del curso se basaban en hacer una app con React usando componentes, react-dom, arrow functiones, etc, aunque hay cosas en el video que a día de hoy están deprecated, o no funcionan.
 
-***Examen***
-**Intento 1 -> 12 aciertos**
-**Intento 2 -> 18 aciertos**
+***Examen Curso React Principiante***
+
+- **Intento 1 -> 12 aciertos**
+
+- **Intento 2 -> 18 aciertos**
 
 ## Comunicación con el servidor
 Una web clásica se basa en un servidor estático que puede estar en cualquier sitio, cuando al servidor le llega una petición la procesa y le devuelve al navegador una respuesta en HTML, el navegador es el que se encarga de la renderización; esto es un problema ya que toda la carga del renderizado se la lleva el servidor
@@ -252,3 +254,10 @@ Favorecer la cascada y mantener el mínimo posible de componentes con estado o s
 Mantener los componentes puros, cuando sea posible, no sólo favorece a la cascada sino que nos permite introducir optimizaciones de la librería
 
 Centralizar el estado puede ser positivo incluso aunque no se use un patrón concreto, simplemente tener alguna estrategia simplificaría el desarrollo
+
+
+***Examen Curso React Intermedio***
+
+- **Intento 1 -> 16 aciertos** 
+
+## Desarrollo con Hooks
