@@ -261,3 +261,27 @@ Centralizar el estado puede ser positivo incluso aunque no se use un patrón con
 - **Intento 1 -> 16 aciertos** 
 
 ## Desarrollo con Hooks
+
+Los Hooks de React permiten a las funciones acceder a estado y ciclo de vida, acercando la filosofía más a la inicial del equipo
+
+Las funcionalidades incluyen estado, gestión de efectos secundarios y acceso a los contextos existentes de React
+
+Los hooks aprovechan el concepto de hoisting y closure para crear conextos en donde puedan existir y mantener sus valores entre ejecuciones
+
+## Manejo de estado con Hooks
+
+A diferencia de los componentes de clase, el estado en los componentes funcionales depende de un Hook y no está asociadoa this
+
+El estado en componentes duncionales se puede lograr gracias al uso de Hooks de estado como son useState y useReducer
+
+El hook useState nos permite declarar una variable de estado que permanece con un valor inalterado a menos que lo modifiquemos mediante un setter
+
+El hook useReducer nos permite implementar un estado en un objeto, más parecido al de clases, pero cuya manipulación es similar al patrón Redux
+
+## Ciclo de vida con Hooks
+
+El Hook de efecto permite realizar efectos secundarios sobre nuestro código, especificando una lista de dependencias que lancen de nuevo dicho hook
+
+Por su naturaleza, useEffect sustituye de forma efectiva las funciones de ciclo de vida de los componentes de clase y responde a los cambios, montaje, y desmontaje
+
+Los hooks de efecto son llamados tras cada renderizado de React. Si queremos que sean llamados síncronamente tras las updates debemos de usar useLayoutEffect
