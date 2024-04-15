@@ -285,3 +285,35 @@ El Hook de efecto permite realizar efectos secundarios sobre nuestro código, es
 Por su naturaleza, useEffect sustituye de forma efectiva las funciones de ciclo de vida de los componentes de clase y responde a los cambios, montaje, y desmontaje
 
 Los hooks de efecto son llamados tras cada renderizado de React. Si queremos que sean llamados síncronamente tras las updates debemos de usar useLayoutEffect
+
+## Fiabilidad y test
+
+La fase de confirmación es muy rápida, pero la de render puede ser muy lenta, por tanto se prevee una mejora con un modo asíncrono. En este modo los métodos de la fase de render pueden ser llamados múltiples veces y de forma automática por React. Por tanto es mandatorio no introducir ningún tipo de efecto secundario en estos métodos del ciclo de vida
+
+El modo estricto de React es un componente sin renderización que permite debuggear los componentes contenidos
+
+El uso de la asincronía en React hace que algunos ciclos de vida sean inseguros, al igual que aplicar efectos secundarios en los métodos de la fase de confirmación
+
+Para detectar efectos secundarios en ciclos de la fase de render, React llama a dichos métodos varias veces para hacer dichos efectos más evidentes
+
+## Introdución a Jest
+
+Jest es un framework de testing para Javascript y Typescript que es capaz de conectarse con React y puede ser utilizado para testear nuestras apps
+
+Jest funciona creando archivos .test.js que pueden ser lanzados invocando a un script en nuestro proyecto
+
+El uso básico de Jest se basa en objetos expectativas y funciones comparadora que nos permiten realizar aserciones en nuestro código
+
+## Testeando DOM generado por React
+
+Las utilidades para pruebas de React son un conjunto de funciones orientadas a realizar test, sobre todo basados en Jest
+
+Funcionalidades como act() o Simulate nos permiten reproducir el comportamiento nativo de React fuera de la aplicacion
+
+## Minimizando el número de renderizados
+
+React renderiza con el ciclo de vida shouldComponentUpdate, que le indica si es necesario renderizar, y luego comprueba los árboles actual y nuevo
+
+El ciclo shouldComponentUpdate de Component devuelve siempre true, es posible reimplementalo o usar el de PureComponent que compara props y estado
+
+La renderización y manipulación de listas largas es una tarea pesada para los frameworks Javascript, es posible virtualizarlas para reducir la carga
