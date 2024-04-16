@@ -348,4 +348,6 @@ Actualmente el modo experimental va a cambiar con React 18 y la adopción se pro
 
 ***Examen Curso React Avanzado***
 
-- **Intento 1 -> 17 aciertos** 
+- **Intento 1 -> 17 aciertos**
+
+*Subido código relacionado con el Taller React Hooks*
