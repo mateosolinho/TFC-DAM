@@ -1,6 +1,6 @@
 # Curso React Mateo Soliño
 
-## <ins> Semana 09/04 </ins>
+## <ins> Semana 09/04 - 16/04 </ins>
 
 ### Sistemas de diseño, patrones y componentes: 
 El diseño "interno" de React se divide en Layout, Lógica y Estilos. Actualmente la arquitectura del frontend se basa en el encapsulamiento, hay un archivo de estilos, uno de lógica común, y por cada bloque llamado página existe un apartado de layout y otro de lógica propia.
@@ -317,3 +317,35 @@ React renderiza con el ciclo de vida shouldComponentUpdate, que le indica si es 
 El ciclo shouldComponentUpdate de Component devuelve siempre true, es posible reimplementalo o usar el de PureComponent que compara props y estado
 
 La renderización y manipulación de listas largas es una tarea pesada para los frameworks Javascript, es posible virtualizarlas para reducir la carga
+
+## <ins> Semana 16/04 - 23/04 </ins>
+
+### 16/04
+
+## Memorización: Cacheando funciones
+
+La memorización es una técnica que consiste en almacenar en una caché el resultado de una función y devolverlo si los parámetros no cambian
+
+En React nos interesa para aplicarlo a los componentes funcionales y sus funciones, la forma más sencilla es para componentes puros usando React.memo
+
+Para aplicar memrización a funciones de un componente funcional podemos usar los hooks useCallback y useMemo, que realizarán memorización sobre las funciones que envuelvan
+
+## Code-Splitting y tree-shaking
+
+El bundle es el empaquetado que genera Webpack (O Rollup o un bundler similar) y cuyo tamaño puede afectar a la velocidad de carga de la App
+
+La reducción por code-splitting consiste en la carga diferifa de los componentes usando React.lazy y React.suspense para crear una hasta que esté disponible
+
+La reducción por tree-shaking es un proceso interno del bundler que consiste en la eliminación del código muerto tanto en nuestro source como en el de las dependencias
+
+## Renderizado Concurrente
+
+La renderización actual de React hasta la versión 17 es síncrona y por tanto bloqueante, lo cual puede deteriorar la experiencia del usuario
+
+El modo concurrente es una propuesta experimental cuyo objetivo es lograr que las actualizaciones de React funcionen por separado y los renderizados sean interrumpibles y ordenados por prioridad
+
+Actualmente el modo experimental va a cambiar con React 18 y la adopción se producirá gradualmente y no directa como se anunció originalmente
+
+***Examen Curso React Avanzado***
+
+- **Intento 1 -> 17 aciertos** 
