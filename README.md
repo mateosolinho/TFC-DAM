@@ -351,3 +351,17 @@ Actualmente el modo experimental va a cambiar con React 18 y la adopción se pro
 - **Intento 1 -> 17 aciertos**
 
 *Subido código relacionado con el Taller React Hooks*
+
+## Tipos de estado
+
+React controla todo el estado que tiene que ver con la UI o aquel si bien directamente no tiene que ver con el user interface, al final lo utilizamos para renderizar (por ejemplo el estado de una petición http para poder mostrar un spinner)
+
+React nos permite gestionar todo ese estado de UI y se encarga de hacer los cambios pertinentes
+
+## Props vs State
+
+Si no puede ser recalculado con props y lo voy a usar en el render, deber de ser State
+
+## Práctica: Tipos de estado
+
+*Subido archivo práctica tipos de estado*
