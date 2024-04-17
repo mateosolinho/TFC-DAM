@@ -352,6 +352,8 @@ Actualmente el modo experimental va a cambiar con React 18 y la adopción se pro
 
 *Subido código relacionado con el Taller React Hooks*
 
+### 17/04
+
 ## Tipos de estado
 
 React controla todo el estado que tiene que ver con la UI o aquel si bien directamente no tiene que ver con el user interface, al final lo utilizamos para renderizar (por ejemplo el estado de una petición http para poder mostrar un spinner)
@@ -365,3 +367,13 @@ Si no puede ser recalculado con props y lo voy a usar en el render, deber de ser
 ## Práctica: Tipos de estado
 
 *Subido archivo práctica tipos de estado*
+
+## Diferencias entre Clases y componentes funcionales
+
+Podríamos tener una aplicación donde usemos tanto componentes funcionales como componentes de clase y convivir perfectamente, de hecho hasta que no han llegado los hooks, esto era normal, pero es recomendable pararnos un momento para decidir qué camino tomar en función de nuestras circunstancias y necesidades
+
+## Composición o herencia
+
+El concepto de Herencia está muy apegado al concepto de Clase. En Javascript no existen las clases porque desde que cualquier función puede devolver un objeto nuevo, no hace falta invocar a un constructor para obtener instancias
+
+En Javascript favorece la composición frente a la herencia tradicional
