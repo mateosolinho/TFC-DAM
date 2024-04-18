@@ -195,65 +195,65 @@ Un interceptor es uan función que procesa la respuesta o el envio de una petici
 
 ## Rutas, navegación y portales
 
-Llamamos Router en react a un componente que muestra u oculta condicionalmente nuestars vistas, administrando la URL y sin realizar una recarga
+Llamamos Router en react a un componente que muestra u oculta condicionalmente nuestars vistas, administrando la URL y sin realizar una recarga.
 
-La librería de react-router es a día de hoy la más usada y gestiona los porblemas habituales del routing de manera liviana
+La librería de react-router es a día de hoy la más usada y gestiona los porblemas habituales del routing de manera liviana.
 
-El routing de forma general, y especificamente para esta librería se divide en switchs y rutas
+El routing de forma general, y especificamente para esta librería se divide en switchs y rutas.
 
-El routing en una aplicación también implica una gestión de la navegación y una forma de recuperar y manipular el historial
+El routing en una aplicación también implica una gestión de la navegación y una forma de recuperar y manipular el historial.
 
-La API de HTML5 History nos permite manipular el historial del navegador sin etener que realizar cargas o recargas reales del contenido
+La API de HTML5 History nos permite manipular el historial del navegador sin etener que realizar cargas o recargas reales del contenido.
 
-React router implementa una versión propia de la API de History del navegador que además es compatible con otros navegadores desactualizados
+React router implementa una versión propia de la API de History del navegador que además es compatible con otros navegadores desactualizados.
 
-La navegación programática es posible en React gracias a la inyección de propiedades del router y el uso de hooks
+La navegación programática es posible en React gracias a la inyección de propiedades del router y el uso de hooks.
 
-Llamamos Portal a un componente de React que nos permite respetar la jerarquía de componentes mientras nos proporciona libertad para renderizar en cualquier punto del DOM
+Llamamos Portal a un componente de React que nos permite respetar la jerarquía de componentes mientras nos proporciona libertad para renderizar en cualquier punto del DOM.
 
-Los portales son usados en casos como modales, diálogos, tolltips y demás elementos entorpecidos por el z-index o sensibles a la posición en el DOM
+Los portales son usados en casos como modales, diálogos, tolltips y demás elementos entorpecidos por el z-index o sensibles a la posición en el DOM.
 
-Pese a encontrarse en puntos del DOM diferentes, se respetan las consecuencias de la jerarquía de componentes de React, incluyendo en la propagación de eventos
+Pese a encontrarse en puntos del DOM diferentes, se respetan las consecuencias de la jerarquía de componentes de React, incluyendo en la propagación de eventos.
 
 ## Abstracción de funcionalidades
 
-Un HOC está basado en el concepto de función de alto nivel de Javascript (HOF) y consiste en un componente que devuelve otro componente
+Un HOC está basado en el concepto de función de alto nivel de Javascript (HOF) y consiste en un componente que devuelve otro componente.
 
-Los HOC se dedican principalmente a solucionar preocupaciones transversales, esto es, características comunes que afectann a varias partes de la aplicación
+Los HOC se dedican principalmente a solucionar preocupaciones transversales, esto es, características comunes que afectann a varias partes de la aplicación.
 
-Para facilitar el desarrollo y trazabilidad es recomendable seguir unas convenciones respecto al uso de HOCs
+Para facilitar el desarrollo y trazabilidad es recomendable seguir unas convenciones respecto al uso de HOCs.
 
-Las render props son componentes que entran por propiedades de otros componentes y realizan su renderización, recibiendo parámetros del primero
+Las render props son componentes que entran por propiedades de otros componentes y realizan su renderización, recibiendo parámetros del primero.
 
-Tanto las HOC con las render props son usadas para solucionar preocupaciones transversales, son complementarias y combinables
+Tanto las HOC con las render props son usadas para solucionar preocupaciones transversales, son complementarias y combinables.
 
-Las render props no tienen que ser únicas por componente y el nombre de la propiedad puede ser arbitrario
+Las render props no tienen que ser únicas por componente y el nombre de la propiedad puede ser arbitrario.
 
-Los Hooks de React permiten a los componentes funcionales adquirir la funcionalidad ausente anteriormente de los componentes de clase
+Los Hooks de React permiten a los componentes funcionales adquirir la funcionalidad ausente anteriormente de los componentes de clase.
 
-Las funcionalidades incluyen estado, gestión de efectos secundarios y acceso a los contextos existentes de React
+Las funcionalidades incluyen estado, gestión de efectos secundarios y acceso a los contextos existentes de React.
 
-Usando Hooks de efecto también es posible replicar de manera completa el ciclo de vida disponible en los componenytes de clase
+Usando Hooks de efecto también es posible replicar de manera completa el ciclo de vida disponible en los componenytes de clase.
 
 ## Gestión de estado
 
-Las aplicaciones en React funcionan por diseño pasando las propiedades verticalmente hacia abajo, encascada, y realizando cambios por callbacks
+Las aplicaciones en React funcionan por diseño pasando las propiedades verticalmente hacia abajo, encascada, y realizando cambios por callbacks.
 
-La comunicación horizontal no es necesariamente frecuente pero es un caso complicado para la gestión habitual del estado en React
+La comunicación horizontal no es necesariamente frecuente pero es un caso complicado para la gestión habitual del estado en React.
 
-Existen múltiples soluciones para compartir el estado, algunas de ellas incluso nativas del propio navegador
+Existen múltiples soluciones para compartir el estado, algunas de ellas incluso nativas del propio navegador.
 
-Existen varios patrones de centralizado del estado, pero generalmente sólo varían en el flujo de acción y se basan en principios similares
+Existen varios patrones de centralizado del estado, pero generalmente sólo varían en el flujo de acción y se basan en principios similares.
 
-El patrón Redux se basa en crear una única fuente de verdad en la aplicación, únicamente de sólo lectura y modificable a través de acciones controladas
+El patrón Redux se basa en crear una única fuente de verdad en la aplicación, únicamente de sólo lectura y modificable a través de acciones controladas.
 
-El hook useReducer nos permite implementar nativamente en la librrería patrones de gestión del estado como Redux
+El hook useReducer nos permite implementar nativamente en la librrería patrones de gestión del estado como Redux.
 
-Favorecer la cascada y mantener el mínimo posible de componentes con estado o stateFull simlifica la gestión del estado en puntos controlables
+Favorecer la cascada y mantener el mínimo posible de componentes con estado o stateFull simlifica la gestión del estado en puntos controlables.
 
-Mantener los componentes puros, cuando sea posible, no sólo favorece a la cascada sino que nos permite introducir optimizaciones de la librería
+Mantener los componentes puros, cuando sea posible, no sólo favorece a la cascada sino que nos permite introducir optimizaciones de la librería.
 
-Centralizar el estado puede ser positivo incluso aunque no se use un patrón concreto, simplemente tener alguna estrategia simplificaría el desarrollo
+Centralizar el estado puede ser positivo incluso aunque no se use un patrón concreto, simplemente tener alguna estrategia simplificaría el desarrollo.
 
 
 ***Examen Curso React Intermedio***
@@ -262,61 +262,61 @@ Centralizar el estado puede ser positivo incluso aunque no se use un patrón con
 
 ## Desarrollo con Hooks
 
-Los Hooks de React permiten a las funciones acceder a estado y ciclo de vida, acercando la filosofía más a la inicial del equipo
+Los Hooks de React permiten a las funciones acceder a estado y ciclo de vida, acercando la filosofía más a la inicial del equipo.
 
-Las funcionalidades incluyen estado, gestión de efectos secundarios y acceso a los contextos existentes de React
+Las funcionalidades incluyen estado, gestión de efectos secundarios y acceso a los contextos existentes de React.
 
-Los hooks aprovechan el concepto de hoisting y closure para crear conextos en donde puedan existir y mantener sus valores entre ejecuciones
+Los hooks aprovechan el concepto de hoisting y closure para crear conextos en donde puedan existir y mantener sus valores entre ejecuciones.
 
 ## Manejo de estado con Hooks
 
-A diferencia de los componentes de clase, el estado en los componentes funcionales depende de un Hook y no está asociadoa this
+A diferencia de los componentes de clase, el estado en los componentes funcionales depende de un Hook y no está asociadoa this.
 
-El estado en componentes duncionales se puede lograr gracias al uso de Hooks de estado como son useState y useReducer
+El estado en componentes duncionales se puede lograr gracias al uso de Hooks de estado como son useState y useReducer.
 
-El hook useState nos permite declarar una variable de estado que permanece con un valor inalterado a menos que lo modifiquemos mediante un setter
+El hook useState nos permite declarar una variable de estado que permanece con un valor inalterado a menos que lo modifiquemos mediante un setter.
 
-El hook useReducer nos permite implementar un estado en un objeto, más parecido al de clases, pero cuya manipulación es similar al patrón Redux
+El hook useReducer nos permite implementar un estado en un objeto, más parecido al de clases, pero cuya manipulación es similar al patrón Redux.
 
 ## Ciclo de vida con Hooks
 
-El Hook de efecto permite realizar efectos secundarios sobre nuestro código, especificando una lista de dependencias que lancen de nuevo dicho hook
+El Hook de efecto permite realizar efectos secundarios sobre nuestro código, especificando una lista de dependencias que lancen de nuevo dicho hook.
 
-Por su naturaleza, useEffect sustituye de forma efectiva las funciones de ciclo de vida de los componentes de clase y responde a los cambios, montaje, y desmontaje
+Por su naturaleza, useEffect sustituye de forma efectiva las funciones de ciclo de vida de los componentes de clase y responde a los cambios, montaje, y desmontaje.
 
-Los hooks de efecto son llamados tras cada renderizado de React. Si queremos que sean llamados síncronamente tras las updates debemos de usar useLayoutEffect
+Los hooks de efecto son llamados tras cada renderizado de React. Si queremos que sean llamados síncronamente tras las updates debemos de usar useLayoutEffect.
 
 ## Fiabilidad y test
 
-La fase de confirmación es muy rápida, pero la de render puede ser muy lenta, por tanto se prevee una mejora con un modo asíncrono. En este modo los métodos de la fase de render pueden ser llamados múltiples veces y de forma automática por React. Por tanto es mandatorio no introducir ningún tipo de efecto secundario en estos métodos del ciclo de vida
+La fase de confirmación es muy rápida, pero la de render puede ser muy lenta, por tanto se prevee una mejora con un modo asíncrono. En este modo los métodos de la fase de render pueden ser llamados múltiples veces y de forma automática por React. Por tanto es mandatorio no introducir ningún tipo de efecto secundario en estos métodos del ciclo de vida.
 
-El modo estricto de React es un componente sin renderización que permite debuggear los componentes contenidos
+El modo estricto de React es un componente sin renderización que permite debuggear los componentes contenidos.
 
-El uso de la asincronía en React hace que algunos ciclos de vida sean inseguros, al igual que aplicar efectos secundarios en los métodos de la fase de confirmación
+El uso de la asincronía en React hace que algunos ciclos de vida sean inseguros, al igual que aplicar efectos secundarios en los métodos de la fase de confirmación.
 
-Para detectar efectos secundarios en ciclos de la fase de render, React llama a dichos métodos varias veces para hacer dichos efectos más evidentes
+Para detectar efectos secundarios en ciclos de la fase de render, React llama a dichos métodos varias veces para hacer dichos efectos más evidentes.
 
 ## Introdución a Jest
 
-Jest es un framework de testing para Javascript y Typescript que es capaz de conectarse con React y puede ser utilizado para testear nuestras apps
+Jest es un framework de testing para Javascript y Typescript que es capaz de conectarse con React y puede ser utilizado para testear nuestras apps.
 
-Jest funciona creando archivos .test.js que pueden ser lanzados invocando a un script en nuestro proyecto
+Jest funciona creando archivos .test.js que pueden ser lanzados invocando a un script en nuestro proyecto.
 
-El uso básico de Jest se basa en objetos expectativas y funciones comparadora que nos permiten realizar aserciones en nuestro código
+El uso básico de Jest se basa en objetos expectativas y funciones comparadora que nos permiten realizar aserciones en nuestro código.
 
 ## Testeando DOM generado por React
 
-Las utilidades para pruebas de React son un conjunto de funciones orientadas a realizar test, sobre todo basados en Jest
+Las utilidades para pruebas de React son un conjunto de funciones orientadas a realizar test, sobre todo basados en Jest.
 
-Funcionalidades como act() o Simulate nos permiten reproducir el comportamiento nativo de React fuera de la aplicacion
+Funcionalidades como act() o Simulate nos permiten reproducir el comportamiento nativo de React fuera de la aplicacion.
 
 ## Minimizando el número de renderizados
 
-React renderiza con el ciclo de vida shouldComponentUpdate, que le indica si es necesario renderizar, y luego comprueba los árboles actual y nuevo
+React renderiza con el ciclo de vida shouldComponentUpdate, que le indica si es necesario renderizar, y luego comprueba los árboles actual y nuevo.
 
-El ciclo shouldComponentUpdate de Component devuelve siempre true, es posible reimplementalo o usar el de PureComponent que compara props y estado
+El ciclo shouldComponentUpdate de Component devuelve siempre true, es posible reimplementalo o usar el de PureComponent que compara props y estado.
 
-La renderización y manipulación de listas largas es una tarea pesada para los frameworks Javascript, es posible virtualizarlas para reducir la carga
+La renderización y manipulación de listas largas es una tarea pesada para los frameworks Javascript, es posible virtualizarlas para reducir la carga.
 
 ## <ins> Semana 16/04 - 23/04 </ins>
 
@@ -324,27 +324,27 @@ La renderización y manipulación de listas largas es una tarea pesada para los 
 
 ## Memorización: Cacheando funciones
 
-La memorización es una técnica que consiste en almacenar en una caché el resultado de una función y devolverlo si los parámetros no cambian
+La memorización es una técnica que consiste en almacenar en una caché el resultado de una función y devolverlo si los parámetros no cambian.
 
-En React nos interesa para aplicarlo a los componentes funcionales y sus funciones, la forma más sencilla es para componentes puros usando React.memo
+En React nos interesa para aplicarlo a los componentes funcionales y sus funciones, la forma más sencilla es para componentes puros usando React.memo.
 
-Para aplicar memrización a funciones de un componente funcional podemos usar los hooks useCallback y useMemo, que realizarán memorización sobre las funciones que envuelvan
+Para aplicar memrización a funciones de un componente funcional podemos usar los hooks useCallback y useMemo, que realizarán memorización sobre las funciones que envuelvan.
 
 ## Code-Splitting y tree-shaking
 
-El bundle es el empaquetado que genera Webpack (O Rollup o un bundler similar) y cuyo tamaño puede afectar a la velocidad de carga de la App
+El bundle es el empaquetado que genera Webpack (O Rollup o un bundler similar) y cuyo tamaño puede afectar a la velocidad de carga de la App.
 
-La reducción por code-splitting consiste en la carga diferifa de los componentes usando React.lazy y React.suspense para crear una hasta que esté disponible
+La reducción por code-splitting consiste en la carga diferifa de los componentes usando React.lazy y React.suspense para crear una hasta que esté disponible.
 
-La reducción por tree-shaking es un proceso interno del bundler que consiste en la eliminación del código muerto tanto en nuestro source como en el de las dependencias
+La reducción por tree-shaking es un proceso interno del bundler que consiste en la eliminación del código muerto tanto en nuestro source como en el de las dependencias.
 
 ## Renderizado Concurrente
 
-La renderización actual de React hasta la versión 17 es síncrona y por tanto bloqueante, lo cual puede deteriorar la experiencia del usuario
+La renderización actual de React hasta la versión 17 es síncrona y por tanto bloqueante, lo cual puede deteriorar la experiencia del usuario.
 
-El modo concurrente es una propuesta experimental cuyo objetivo es lograr que las actualizaciones de React funcionen por separado y los renderizados sean interrumpibles y ordenados por prioridad
+El modo concurrente es una propuesta experimental cuyo objetivo es lograr que las actualizaciones de React funcionen por separado y los renderizados sean interrumpibles y ordenados por prioridad.
 
-Actualmente el modo experimental va a cambiar con React 18 y la adopción se producirá gradualmente y no directa como se anunció originalmente
+Actualmente el modo experimental va a cambiar con React 18 y la adopción se producirá gradualmente y no directa como se anunció originalmente.
 
 ***Examen Curso React Avanzado***
 
@@ -356,13 +356,13 @@ Actualmente el modo experimental va a cambiar con React 18 y la adopción se pro
 
 ## Tipos de estado
 
-React controla todo el estado que tiene que ver con la UI o aquel si bien directamente no tiene que ver con el user interface, al final lo utilizamos para renderizar (por ejemplo el estado de una petición http para poder mostrar un spinner)
+React controla todo el estado que tiene que ver con la UI o aquel si bien directamente no tiene que ver con el user interface, al final lo utilizamos para renderizar (por ejemplo el estado de una petición http para poder mostrar un spinner).
 
-React nos permite gestionar todo ese estado de UI y se encarga de hacer los cambios pertinentes
+React nos permite gestionar todo ese estado de UI y se encarga de hacer los cambios pertinentes.
 
 ## Props vs State
 
-Si no puede ser recalculado con props y lo voy a usar en el render, deber de ser State
+Si no puede ser recalculado con props y lo voy a usar en el render, deber de ser State.
 
 ## Práctica: Tipos de estado
 
@@ -370,10 +370,34 @@ Si no puede ser recalculado con props y lo voy a usar en el render, deber de ser
 
 ## Diferencias entre Clases y componentes funcionales
 
-Podríamos tener una aplicación donde usemos tanto componentes funcionales como componentes de clase y convivir perfectamente, de hecho hasta que no han llegado los hooks, esto era normal, pero es recomendable pararnos un momento para decidir qué camino tomar en función de nuestras circunstancias y necesidades
+Podríamos tener una aplicación donde usemos tanto componentes funcionales como componentes de clase y convivir perfectamente, de hecho hasta que no han llegado los hooks, esto era normal, pero es recomendable pararnos un momento para decidir qué camino tomar en función de nuestras circunstancias y necesidades.
 
 ## Composición o herencia
 
-El concepto de Herencia está muy apegado al concepto de Clase. En Javascript no existen las clases porque desde que cualquier función puede devolver un objeto nuevo, no hace falta invocar a un constructor para obtener instancias
+El concepto de Herencia está muy apegado al concepto de Clase. En Javascript no existen las clases porque desde que cualquier función puede devolver un objeto nuevo, no hace falta invocar a un constructor para obtener instancias.
 
 En Javascript favorece la composición frente a la herencia tradicional
+
+### 18/04
+
+## Introducción a Clases
+
+SetState es una petición a React para que actualice un componente determinado. Des esta forma, setState "encolará" los cambios de estado y React actualizará el componente y sus hijos con estos cambios.
+
+## setState con función y validación
+
+Internamente react ejecutará la función que le pasemos a setState y generará un nuevo estado con Object.assign.
+
+## La asincronía de setState
+
+setState es asíncrono. Quiere decir que no se produce una actualización de estado inmediatamente después de invocar a la función
+
+## Funcionamiento de setState con una función
+
+Cuando hacemos una petición de actualización de estado con funciones, React encola las llamadas y después compone las funciones dentro de Object.assign para obtener el nuevo estado.
+
+## Hacer operaciones después de setState
+
+En ocasiones necesitamos hacer operaciones justo después de actualizar el estado. Para ello, React nos proporciona una última forma de llamar a setState. Esto es útil cuando queremos escuchar un cambio en concreto. Para operaciones más complejas, se recomienda usar componentDidUpdate.
+
+*Añadida práctica local-storage-jsx*
