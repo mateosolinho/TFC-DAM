@@ -402,6 +402,8 @@ En ocasiones necesitamos hacer operaciones justo después de actualizar el estad
 
 *Añadida práctica local-storage-jsx*
 
+### 21/04
+
 ## Introducción a Hooks
 
 Los hooks son la nueva forma de a partir de React 16.8 de gestionar estado en los componentes funcionales. Las principales ventajas son las siguientes: 
