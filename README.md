@@ -163,8 +163,7 @@ Las tres últimas clases del curso se basaban en hacer una app con React usando 
 ***Examen Curso React Principiante***
 
 - **Intento 1 -> 12 aciertos**
-
-- **Intento 2 -> 18 aciertos**
+- **Intento 2 -> 18 aciertos** - Aprobado
 
 ## Comunicación con el servidor
 Una web clásica se basa en un servidor estático que puede estar en cualquier sitio, cuando al servidor le llega una petición la procesa y le devuelve al navegador una respuesta en HTML, el navegador es el que se encarga de la renderización; esto es un problema ya que toda la carga del renderizado se la lleva el servidor
@@ -258,7 +257,7 @@ Centralizar el estado puede ser positivo incluso aunque no se use un patrón con
 
 ***Examen Curso React Intermedio***
 
-- **Intento 1 -> 16 aciertos** 
+- **Intento 1 -> 16 aciertos** - Aprobado
 
 ## Desarrollo con Hooks
 
@@ -448,3 +447,7 @@ Si proporcionas una lista de dependencias, el efecto se ejecutará cada vez que 
 ## Custom Hook
 Un custom hook en React es una función que te permite encapsular la lógica de tu componente y reutilizarla en otros componentes. Puedes crear tus propios hooks para compartir lógica entre componentes de una manera limpia y modular.
 
+***Examen Curso de Manejo de Estado con Clases y Hooks en React***
+
+- **Intento 1 -> 12 aciertos**
+- **Intento 2 -> 16 aciertos** - Aprobado
