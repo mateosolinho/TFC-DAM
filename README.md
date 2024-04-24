@@ -413,22 +413,27 @@ Los hooks son la nueva forma de a partir de React 16.8 de gestionar estado en lo
 - La funcionalidad es más fácil de abstraer con Custom Hooks
 
 ## Refactorizar una clase a componente funcional
+
 Refactorizar una clase a un componente funcional en React implica transformar la manera en que se define un componente, pasando de utilizar una clase de JavaScript a una función. Este cambio simplifica el código y lo hace más legible y fácil de mantener, especialmente para componentes que no necesitan estado o métodos de ciclo de vida complejos.
 
 ## Uso de set con una función
+
 La función setState (en componentes de clase) o la función devuelta por useState (en componentes funcionales) toma un nuevo valor de estado como argumento y actualiza el estado del componente. Cuando se actualiza el estado en React, el componente se vuelve a renderizar automáticamente con los nuevos valores de estado.
 
 Es importante notar que en React, los estados deben actualizarse de forma inmutable, es decir, debes crear un nuevo objeto o valor en lugar de modificar directamente el estado existente. Esto garantiza un comportamiento predecible y eficiente del componente.
 
 ## Refactorizar estados con función a Hooks
+
 Refactorizar estados con funciones a Hooks en React implica reemplazar el uso de variables de estado gestionadas mediante funciones en componentes de clase, por el uso de Hooks como useState en componentes funcionales. Esto simplifica el código y lo hace más claro y fácil de mantener.
 
 ## La asincronía de set
+
 La asincronía de set se refiere al comportamiento en JavaScript donde la ejecución de la función set (como setState en React) puede no ser inmediatamente efectiva. En React, cuando utilizas setState para actualizar el estado de un componente de clase, la actualización no es necesariamente instantánea.
 
 En lugar de aplicar los cambios de estado de inmediato, React puede agrupar múltiples llamadas a setState y realizar las actualizaciones en lotes para mejorar el rendimiento. Esto significa que no puedes confiar en que el estado se actualice de inmediato después de llamar a setState.
 
 ## LocalStorage con useEffect
+
 Cuando utilizas useEffect con LocalStorage en React, lo haces para sincronizar el estado de tu componente con el almacenamiento local del navegador.
 
 Usar LocalStorage implica que los datos se almacenan en el navegador del usuario y persisten incluso después de que se cierre la ventana del navegador o se actualice la página.
@@ -438,6 +443,7 @@ Cuando utilizas useEffect, puedes leer datos del LocalStorage cuando el componen
 En resumen, useEffect te permite manejar la sincronización entre el estado del componente y el LocalStorage, lo que es útil para aplicaciones que necesitan almacenar y recuperar datos de forma persistente en el navegador del usuario.
 
 ## Dependencias de useEffect
+
 Las dependencias de useEffect en React son un array opcional que se pasa como segundo argumento a useEffect. Estas dependencias controlan cuándo se ejecuta el efecto.
 
 Cuando proporcionas un array vacío de dependencias ([]), el efecto se ejecuta solo una vez, después de que el componente se monta. Esto es útil para tareas que solo deben realizarse una vez, como la inicialización de datos.
@@ -451,3 +457,17 @@ Un custom hook en React es una función que te permite encapsular la lógica de 
 
 - **Intento 1 -> 12 aciertos**
 - **Intento 2 -> 16 aciertos** - Aprobado
+
+### 24/04
+
+## Arquitectura Flux
+
+Es la arquitectura que utiliza Facebook para construir sus aplicaciones Frontend.
+Es importante resaltar que Redux, es una implementación de Flux.
+Por tanto puedes obtener los beneficios de la arquitectura Flux sin usar Redux.
+
+## Introducción a los Reducers
+
+Flux es un patrón para el manejo de datos en tu aplicación
+Lo más inportante de Flux es: Define un flujo unidireccional para la UI
+En programación encontramos la utilidad reduce que nos permite aplicar una función a cada uno de los elementos de una lista con el objetivo de acumular valor
