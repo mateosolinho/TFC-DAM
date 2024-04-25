@@ -457,20 +457,26 @@ Un custom hook en React es una función que te permite encapsular la lógica de 
 
 - **Intento 1 -> 12 aciertos**
 - **Intento 2 -> 16 aciertos** - Aprobado
+- 
+## <ins> Semana 24/04 - 01/05 </ins>
 
 ### 24/04
 
 ## Arquitectura Flux
 
 Es la arquitectura que utiliza Facebook para construir sus aplicaciones Frontend.
+
 Es importante resaltar que Redux, es una implementación de Flux.
+
 Por tanto puedes obtener los beneficios de la arquitectura Flux sin usar Redux.
 
 ## Introducción a los Reducers
 
-Flux es un patrón para el manejo de datos en tu aplicación
-Lo más inportante de Flux es: Define un flujo unidireccional para la UI
-En programación encontramos la utilidad reduce que nos permite aplicar una función a cada uno de los elementos de una lista con el objetivo de acumular valor
+Flux es un patrón para el manejo de datos en tu aplicación.
+
+Lo más inportante de Flux es: Define un flujo unidireccional para la UI.
+
+En programación encontramos la utilidad reduce que nos permite aplicar una función a cada uno de los elementos de una lista con el objetivo de acumular valor.
 
 ## Actions
 
@@ -490,7 +496,9 @@ Como los reducers son funciones puras en Javascript, es muy fácil realizar test
 
 ## Context
 
-Context nos ofrece una forma de poder compartir una prop entre componentes sin necesidad de tener que ir pasándola en cascada a todos nuestros componentes. Context tiene varias aplicaciones, una de ellas es el poder compartir nuestro estado por todos los componentes.
+Context nos ofrece una forma de poder compartir una prop entre componentes sin necesidad de tener que ir pasándola en cascada a todos nuestros componentes. 
+
+Context tiene varias aplicaciones, una de ellas es el poder compartir nuestro estado por todos los componentes.
 
 ## React.memo y useCallback
 
@@ -499,7 +507,9 @@ React.memo en conjución con useCallback usados en el sitio adecuado puede aport
 ## Introducción a Data fetching en React
 
 Cuando hablamos de traernos datos de una fuente externa como un servidor, estamos hablando de Data Fetching. LocalStorage tambien es un ejemplo de Data Fetching.
+
 Debido a que las funciones que acceden a localStorage o a un servidor externo está fuera de nuestro control, no son consideradas funciones puras.
+
 Para poder lanzar side effects o efectos en React, tenemos que usar siempre "useEffect".
 
 ### 25/04
@@ -518,7 +528,9 @@ Lo que se ha visto hasta ahora es funcional cuando solo tenemos una peticiçon q
 
 ## Data fetching con Reducers
 
-Un reducer aparte de separarnos la lógica de estado de nuestros componentes, nos permite aunar en una única función todos los cambios de estado necesarios dada una acción. Y es precisamente con Data Fetching donde cobran mucho sentido, ya que por lo general vamos a querer realizar varios camios en el estado depende de la acción.
+Un reducer aparte de separarnos la lógica de estado de nuestros componentes, nos permite aunar en una única función todos los cambios de estado necesarios dada una acción. 
+
+Y es precisamente con Data Fetching donde cobran mucho sentido, ya que por lo general vamos a querer realizar varios camios en el estado depende de la acción.
 
 ***Examen Curso de Manejo de Estado y Data Fetching en React***
 
