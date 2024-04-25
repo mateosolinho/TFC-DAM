@@ -525,3 +525,5 @@ Un reducer aparte de separarnos la lógica de estado de nuestros componentes, no
 - **Intento 1 -> 16 aciertos** - Aprobado
 
 *Añadido taller Code splitting en SPA con React*
+
+*Añadido taller React en el servidor*
