@@ -1,5 +1,7 @@
 # Curso React Mateo Soliño
 
+*En este Readme.md iré añadiendo curso a curso lo que vaya aprendiendo y lo que me parezca importante de cada clase*
+
 ## <ins> Semana 09/04 - 16/04 </ins>
 
 ### Sistemas de diseño, patrones y componentes: 
