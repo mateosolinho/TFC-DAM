@@ -546,4 +546,10 @@ Y es precisamente con Data Fetching donde cobran mucho sentido, ya que por lo ge
 
 # Carrera Python Aplicado a Machine Learning
 
+## Introducción a Scikit-learn
 
+Una librería que establece un framework para crear flujos de la creación de algoritmos de ML.
+Efectivamente unifica un campo muy diverso y abstrae las dificultades de cada algoritmo distinto.
+Nuevas librerias frecuentemente adopta su sintaxis, facilitando su adopción.
+
+Para manejar detos lo más común es utilizar Numpy y Pandas, siempre es útil crear gráficos con por ejemplo Matplotlib, Seaborne o Plotnine, si hacen falta otras implementaciones de algoritmos, altenativas típicas son XGBoost, statsmodels y Keras
