@@ -4,6 +4,8 @@
 
 ## <ins> Semana 09/04 - 16/04 </ins>
 
+# Carrera React
+
 ### Sistemas de diseño, patrones y componentes: 
 El diseño "interno" de React se divide en Layout, Lógica y Estilos. Actualmente la arquitectura del frontend se basa en el encapsulamiento, hay un archivo de estilos, uno de lógica común, y por cada bloque llamado página existe un apartado de layout y otro de lógica propia.
 
@@ -541,3 +543,7 @@ Y es precisamente con Data Fetching donde cobran mucho sentido, ya que por lo ge
 *Añadido taller Code splitting en SPA con React*
 
 *Añadido taller React en el servidor*
+
+# Carrera Python Aplicado a Machine Learning
+
+
