@@ -523,3 +523,5 @@ Un reducer aparte de separarnos la lógica de estado de nuestros componentes, no
 ***Examen Curso de Manejo de Estado y Data Fetching en React***
 
 - **Intento 1 -> 16 aciertos** - Aprobado
+
+*Añadido taller Code splitting en SPA con React*
