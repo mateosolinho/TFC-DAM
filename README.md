@@ -471,3 +471,55 @@ Por tanto puedes obtener los beneficios de la arquitectura Flux sin usar Redux.
 Flux es un patrón para el manejo de datos en tu aplicación
 Lo más inportante de Flux es: Define un flujo unidireccional para la UI
 En programación encontramos la utilidad reduce que nos permite aplicar una función a cada uno de los elementos de una lista con el objetivo de acumular valor
+
+## Actions
+
+Una acción (o action) es cualquier evento que se produzca en nuestra aplicación t genere un cambio en nuestro estdo.
+
+## Action Creators
+
+Comno su propio nombre indica, un action crea acciones. Si la única forma de crear Acciones es a través de Action creators, nuestra aplicación es consistente.
+
+## Selectors
+
+La forma de nuestro estado (state shape) debe de estar optimizada al como se actualice en lugar de al como se visualice. Un selector es una funciñon que toma un estado y devuelve una visualizaciñon del mismo.
+
+## Testing Reducers
+
+Como los reducers son funciones puras en Javascript, es muy fácil realizar tests unitarios sobre ellos.
+
+## Context
+
+Context nos ofrece una forma de poder compartir una prop entre componentes sin necesidad de tener que ir pasándola en cascada a todos nuestros componentes. Context tiene varias aplicaciones, una de ellas es el poder compartir nuestro estado por todos los componentes.
+
+## React.memo y useCallback
+
+React.memo en conjución con useCallback usados en el sitio adecuado puede aportar una mejora en el rendimiento de nuestra aplicación. Nos permite no hacer re-renders innecesarios. Recibe una unas dependencias y una función. Mientras las dependencias no cambien, la referencia a esa función será la misma.
+
+## Introducción a Data fetching en React
+
+Cuando hablamos de traernos datos de una fuente externa como un servidor, estamos hablando de Data Fetching. LocalStorage tambien es un ejemplo de Data Fetching.
+Debido a que las funciones que acceden a localStorage o a un servidor externo está fuera de nuestro control, no son consideradas funciones puras.
+Para poder lanzar side effects o efectos en React, tenemos que usar siempre "useEffect".
+
+### 25/04
+
+## Data fetching en useEffect
+
+Para lanzar una función con side-effects necesitamos hacerlo dentro de un useEffect, pero esto solo courre cuando la función en cuestión está relacionada de alguna forma con el ciclo de vida del componente.
+
+## Gestionando successes, errors y loadings
+
+En nuestras aplicaciones no solo queremos controlar cuando todo vaya bien, si no cuando el proceso se esté ejecutando o cuando ocurra un error
+
+## Custom hook para Data fetching
+
+Lo que se ha visto hasta ahora es funcional cuando solo tenemos una peticiçon que hacer, sin embargo, en una aplicación real vamos a querer realizar muchas peticiones a diferentes servicios, por lo que es necesario disponer de una abstracción.
+
+## Data fetching con Reducers
+
+Un reducer aparte de separarnos la lógica de estado de nuestros componentes, nos permite aunar en una única función todos los cambios de estado necesarios dada una acción. Y es precisamente con Data Fetching donde cobran mucho sentido, ya que por lo general vamos a querer realizar varios camios en el estado depende de la acción.
+
+***Examen Curso de Manejo de Estado y Data Fetching en React***
+
+- **Intento 1 -> 16 aciertos** - Aprobado
