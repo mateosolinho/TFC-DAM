@@ -553,3 +553,83 @@ Efectivamente unifica un campo muy diverso y abstrae las dificultades de cada al
 Nuevas librerias frecuentemente adopta su sintaxis, facilitando su adopción.
 
 Para manejar detos lo más común es utilizar Numpy y Pandas, siempre es útil crear gráficos con por ejemplo Matplotlib, Seaborne o Plotnine, si hacen falta otras implementaciones de algoritmos, altenativas típicas son XGBoost, statsmodels y Keras
+
+### 26/04
+
+## Sintaxis Básica
+
+El entrenamiento de un modelo supervisado siempre sigue el mismo patrón:
+
+```python
+my_model = SomeModel(...)
+my_model.fit(X_train, Y_train)
+my_model.predict(X_test)
+```
+*Añadido SckLearn-test.py*
+
+Primer Modelo:
+- Declaramos el modelo, lo "entrenamos" y luego predecimos
+- La sintaxis simple vale para los distintos modelos
+- Cada modelo tiene sus propios "hiperparámetros" que se tiene que especificar
+- El requisito previo es un "X" y "y" en condiciones
+
+*Añadido first-model.py*
+
+Output:
+
+![imagen](https://github.com/mateosolinho/proyecto-final/assets/124877302/bf50c87b-d443-4bd7-b980-e86a1bd649e7)
+
+## Requisitos mínimos
+
+Antes de entrenar un modelo hay que preparar los datos.
+Generalmente la preparación de datos es muy amplio, vamos a centrar en los requisitos básicos por ahora
+Siempre necesitamos:
+- X: datos de los "features" de n filas y m columnas, todos los datos numéricos
+- y: datos del "target" de n filas y 1 columna, todo numérico
+
+Hacen falta un "X" y "y" para entrenar, del mismo número de filas y datos numéricos
+
+Cualquier columna con texto se tiene que transformar a numérico de alguna forma (los nulos a veces tambien)
+
+Es normal que el "X" y "y" vengan de unos datos crudos y que las transformaciones necesarias se hacen ahí
+
+Puntos importantes:
+- Scikit-learn convierte los data frames en arrays de Numpy, entonces el orden de las columnas es importante
+- La flexibilidad de scikit-learn nos permite crear nuestros propios modelos
+- Gracias a scikit-learn, otras librerías adoptan el mismo sintaxis
+- El proceso es similidar para clasificación de varias clases
+
+## Pasos previos a entrenar un modelo
+
+Todas las transformaciones que podemos hacer con slklearn se pueden hacer en Pandas
+
+Sklearn es útil cuando queremos que el proceso sea robusto, "optimizables" y manejar nuestro "train" y "test"
+
+Es común hacer la parte exploratoria en Pandas y explotar sklearn para construir el flujo completo de entrenamiento
+
+## Dividir en Train y Test
+
+La división de los datos de train y test es importante por muchos motivos, tambien para la preparación inicial
+
+No queremos que influyan los datos "no vistos" en el diseño de los pasos de preparación
+
+Se puede hacer con Pandas, pero sklearn nos facilita el proceso y garantizamos evitar errores comunes
+
+## Pipelines
+
+El "pipelearn" de sklearn es una herramienta fundamental para mejorar el precode de preapración
+
+El us manera flexible de crear "flujos" de diferentes pasos de preparación que luego podemos optimizar y ejecutar sobre los datos de test
+
+*Añadido pipelines.py*
+
+Output:
+```python
+array([ 2208.96109587, 14931.09346813, 12903.23640107, 12903.23640107,
+       12903.23640107, 12903.23640107, 11874.23288725,  2301.11985276,
+        4328.97691981,  2301.11985276])
+```
+
+El pipeline es una serie de "pasos" con nombres que se ejecutan al ejecutar el pipeline
+
+Podemos tratar nuestro pipeline como si fuera un modelo cualquiera ya que comparte los métodos y sintaxis común
