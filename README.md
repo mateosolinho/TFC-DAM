@@ -1,4 +1,4 @@
-# Curso React Mateo Soliño
+# Carreras Proyecto Final Mateo Soliño
 
 *En este Readme.md iré añadiendo curso a curso lo que vaya aprendiendo y lo que me parezca importante de cada clase*
 
@@ -630,6 +630,64 @@ array([ 2208.96109587, 14931.09346813, 12903.23640107, 12903.23640107,
         4328.97691981,  2301.11985276])
 ```
 
+Para realmente aprovechar el pipeline explotamos las funciones especiales de scikit-learn
+
+Normalmente utilizan un sintaxis muy similar a nuestros modelos
+
 El pipeline es una serie de "pasos" con nombres que se ejecutan al ejecutar el pipeline
 
 Podemos tratar nuestro pipeline como si fuera un modelo cualquiera ya que comparte los métodos y sintaxis común
+
+## Funciones espaciales para preparar los datos
+
+*Añadido fnc-preparar-datos.py*
+
+Output:
+
+```python
+array([['en', 'Los Angeles'],
+       ['en', 'UKNOWN'],
+       ['es', 'New York City'],
+       ...,
+       ['en', 'New York, NY'],
+       ['en', 'UKNOWN'],
+       ['en', 'New York City']], dtype=object)
+```
+
+Sklearn nos facilita varias funciones útiles para los pasos típicos de preparación de los datos.
+
+Utiliza una sintaxis similar a la sintaxis de los modelos, pero ahora incorporando el método "transform"
+
+Estos pasos se pueden ejecutar con Pandas, pero es difícil respetar los datos de train y test
+
+## Creando un pipeline
+
+*Añadido first-pipeline.py*
+
+Output:
+
+![Sin título](https://github.com/mateosolinho/proyecto-final/assets/124877302/ea628505-b4a5-4f3b-b419-d78093a235b0)
+
+Además de los pasos fundamentales hay algunos que también son muy comunes
+
+Las funciones especiales utilizan una sintaxis común que incorporan el método "transform"
+
+Los pipeline de sklearn nos permiten crear flujos robustos que respetan los datos de train y test
+
+## Introducción a los modelos de Scikit-learn
+
+El modelo es la implementación del algoritmo que aprende a predecir nuestro target basándose en los features
+
+Cada modelo tiene sus propios hiperparámetros y manera de funcionar, pero el "input" y "output" es casi igual
+
+Existen implementaciones distintas para regresión y clasificación
+
+## GLM
+
+Varios distintos modelos que forman la base de los models más "clásicos"
+
+Los más comunes son la regresión lineal y regresión logística
+
+No existen tantos hiperparámetros ya que se ven más afectados por la preparación previa de los datos
+
+Útiles por su interpreatibilidad
