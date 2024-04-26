@@ -691,3 +691,5 @@ Los más comunes son la regresión lineal y regresión logística
 No existen tantos hiperparámetros ya que se ven más afectados por la preparación previa de los datos
 
 Útiles por su interpreatibilidad
+
+La regresión logística nos permite predecir una "probabailidad" real con el método "predict-proba"
