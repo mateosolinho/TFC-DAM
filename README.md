@@ -693,3 +693,99 @@ No existen tantos hiperparámetros ya que se ven más afectados por la preparaci
 Útiles por su interpreatibilidad
 
 La regresión logística nos permite predecir una "probabailidad" real con el método "predict-proba"
+
+## 29/04
+
+## Near Neighbours
+
+Otro modelo simple basado en buscar los vecinos de los puntos
+
+Existe una implementacion tanto para clasificacion y regresion
+
+El hiperparametro mas importante corresponde al numero de "vecinos" a tener en cuenta
+
+## SVM
+
+Otros modelos muy clasicos que buscan separar los datos, con implementacion para clasificacion y regresion
+
+Ahora existen muchos mas hiperparametros interesantes, pero las mas importantes son el kernel y la regularizacion
+
+Para SVM es muy importante estandarizar los datos antes de entrenar
+
+## Modelos basados en arboles
+
+Los modelos basados en arboles son entre los mas poderosos y son muy populares por su flexibilidad ante muchos problemas
+
+La base de todo es el "CART" pero nuevos algoritmos aprovechan el "ensembling" para mejorar los resultados
+
+Hay que tener mucho cuidado con el overfitting y existen algunos hiperparametros claves para esto
+
+*Añadido tree-model.py*
+
+Output:
+
+![imagen](https://github.com/mateosolinho/proyecto-final/assets/124877302/3f499fd8-71b5-4d03-b9d4-51e5ab200953)
+
+Modelos muy poderosos tanto para regresion y clasificacion
+
+Se consigue mucho poder aprovechando el "ensembling" pero siempre hay que limitar la profundidad y las divisiones para limitar el overfitting
+
+Estos modelos son extremadamente flexibles ante cualquier problema
+
+## Redes neuronales
+
+Modelos famosos por sus avances importantes en los ultimos años
+
+La implementacion en scikit-learn es limitado a una red simple y no utiliza GPU
+
+Es el modelo que mas flexibilidad tiene a la hora de optimizar y variar a traves de los hiperparametros
+
+## Introduccion a la evaluacion de resultados
+
+Por un lado tenemos implementaciones de metricas comunes
+
+Tambien disponemos de metodologias graficas
+
+Generalmente lo unico que necesitamos son las predicciones del target y el "target" real
+
+*Añadido evaluacion.py*
+
+Ouput:
+
+```python
+For predictions_log_reg we scored 46%
+For predictions_neigh_clas we scored 77%
+For predictions_neigh_clas_10 we scored 77%
+For predictions_svm_clas we scored 69%
+For predictions_svm_kernel_clas we scored 67%
+For predictions_tree_clas we scored 85%
+For predictions_rf_clas we scored 86%
+For predictions_nn_clas we scored 69%
+For predictions_nn_clas_arq we scored 69%
+```
+
+## Las diferentes metricas
+
+La metrica correcta siempre depende del contexto
+
+Algunas usan la probabilidad, no el valor concreto predicho
+
+## Metodos visuales para la evaluacion
+
+Existen tecnicas de evaluacion que usan graficos, los mas famosos siendo la curva ROC y precision/recall
+
+Sklearn nos facilita la creacion de estas curvas
+
+En algunos casos tambien nos proporciona los datos para que podamos crear nuestro propio grafico con facilidad
+
+- Matriz de confusion:
+
+![imagen](https://github.com/mateosolinho/proyecto-final/assets/124877302/9f58b54c-8408-4eb2-83a6-e0f95b84b3db)
+
+- Curva ROC:
+
+![imagen](https://github.com/mateosolinho/proyecto-final/assets/124877302/c6f237c0-1b1b-4986-880c-3a27db131b00)
+
+
+
+## Calibracion de la probabilidad
