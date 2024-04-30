@@ -945,3 +945,27 @@ Output:
 Tenemos disponibles varias metricas para medir la calidad de los clusters que utilizan los datos de entrada y los grupos aprendidos
 
 Nos podemos aprovechar de esto para elegir el mejor numero de clusters utilizando el metodo del codo y buscando el outno de menor cambio de la metrica
+
+## La preparacion tipica
+
+El requisito basico es un conjunto de datos numericos
+
+Normalmente preferimos trabajar con variables continuas para conseguir los mejores resultados
+
+Kmeans es muy sensible a ciertos aspectos de los datos
+
+## Eligiendo y normalizando las variables I
+
+Mencionamos anteriormentw que Kmeans es muy sensible a los datos que utilizamos, por lo que es muy importante elegir las mejores variables
+
+Es muy importante utilizar variables cateoricas, existen adaptaciones a kmeans
+
+*Añadido variables.py*
+
+Output:
+
+![Sin título](https://github.com/mateosolinho/proyecto-final/assets/124877302/52080b3b-2c04-4dc2-97c5-19769d7d2607)
+
+El paso de elegir las variables es fundamental con el algoritmo de kmeans
+
+## Eligiendo y normalizando las variables II
