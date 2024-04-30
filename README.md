@@ -784,8 +784,164 @@ En algunos casos tambien nos proporciona los datos para que podamos crear nuestr
 
 - Curva ROC:
 
-![imagen](https://github.com/mateosolinho/proyecto-final/assets/124877302/c6f237c0-1b1b-4986-880c-3a27db131b00)
+![imagen](https://github.com/mateosolinho/proyecto-final/assets/124877302/ae01e6e5-2b9c-4338-bbf6-54cdac5e9fb9)
 
-
+### 30/04
 
 ## Calibracion de la probabilidad
+
+Es generalmente util tener una probabilidad en vez de una prediccion concreta, pero algunos algoritmos no nos lo dan
+
+Algunas tecnicas de evaluacion requieren esta probabilidad
+
+Sklearn nos facilita una manera de "calibrar" la pseudo probabilidad que tenemos para que esta se comporte mejor
+
+*Añadido calibracion.py*
+
+Output:
+
+![imagen](https://github.com/mateosolinho/proyecto-final/assets/124877302/a2cd9b01-c612-45fa-98a6-66d62ceed4b7)
+
+## Optimizacion basica
+
+Para conseguir los mejores resultados es necesario optimizar los modelos que entrenamos
+
+Nos centramos en 3 patas principales:
+- Seleccionar los mejores features
+- Elegir los hiperparametros
+- Mejorar nuestro pipeline
+
+## Eligiendo los mejores features
+
+Puede ser importante reducir el numero de features que tenemos para:
+- Mejorar los resultados
+- Reducir overfiting
+- Mejorar interpretabilidad
+
+Sklearn nos facilita este procesp de varias maneras
+
+## Resumen
+
+Scikit-learn es una libreria muy poderosa ya que contruye un framework completo para el proceso de construir modelos
+
+Ademas de modelos tipicos de ML, existen implementaciones para muchos mas procesos, como la preparacion de los datos
+
+La ventaja de utilizar sklearn es el poder de combinaar todos los pasos en un unico sitio de forma muy flexible
+
+***Examen Curso de Machine Learning supervisado con Scikit-learn***
+
+- **Intento 1 -> 17 aciertos** - Aprobado
+
+## ML no supervisado en Python
+
+## Introduccion a Scikit-learn
+
+Una libreria que establece un framework para crear flujos de la creacion de algoritmos de ML
+
+Unifica un campo muy diverso y abstrae las dificultades de cada algoritmo distinto
+
+Nuevas librerias frecuentemente adoptan su sintaxis, facilitando su adaptacion
+
+## Introduccion a K-Means
+
+- Que es la clusterizacion?
+Un campo que busca agrupar los datos en unos clusters compuestos por datos similares
+
+En vez de predecir un arget, buscamos asignar este target a los datos
+
+Aunque no tengamos un target especifico, construimos los clusters con un objetivo
+
+
+Kmeans crea grupos centrados en la media de los datos que pertenecen al grupo
+
+Nosotros tenemos que elegir el numero de grupos que existen y el algoritmo busca los centroides
+
+La implementacion en sklearn es muy escalable y sigue el patron tipico de un modelo de aprendizaje supervisado
+
+## Visualizando los resultados
+
+Para evaluar los resultados es muy util visualizar los cluster qie estamos construyendo
+
+Nos permite entender de una forma sencilla si los resultados tienen un sentido comun
+
+Es importante combinar la prediccion del modelo con alguna libreria de visualizacion
+
+*Añadido visualizacion.py*
+
+```python
+graph = (
+    pn.ggplot(user_stats, pn.aes(x='followers', y='following', color='predictions_kmeans_3'))
+    + pn.geom_point()
+    + pn.scale_x_continuous(trans='log')
+    + pn.scale_y_continuous(trans='log')
+)
+
+graph.draw();
+```
+
+Output:
+
+![Sin título](https://github.com/mateosolinho/proyecto-final/assets/124877302/b368f132-301a-48cd-b82a-eedb17a670d6)
+
+```python
+graph = (
+    pn.ggplot(user_stats, pn.aes(x='followers', y='media', color='predictions_kmeans_3'))
+    + pn.geom_point()
+    + pn.scale_x_continuous(trans='log')
+    + pn.scale_y_continuous(trans='log')
+)
+
+graph.draw();
+```
+
+Output:
+
+![Sin título](https://github.com/mateosolinho/proyecto-final/assets/124877302/d71b231b-19b0-4392-9748-53ded094e96c)
+
+```python
+graph = (
+    pn.ggplot(user_stats, pn.aes(x='media', y='following', color='predictions_kmeans_3'))
+    + pn.geom_point()
+    + pn.scale_x_continuous(trans='log')
+    + pn.scale_y_continuous(trans='log')
+)
+
+graph.draw();
+```
+
+Output:
+
+![Sin título](https://github.com/mateosolinho/proyecto-final/assets/124877302/2764ad7b-c625-4faf-807c-96b395f7a004)
+
+```python
+graph = (
+    pn.ggplot(user_stats, pn.aes(x='followers', y='following', color='predictions_kmeans_10'))
+    + pn.geom_point()
+    + pn.scale_x_continuous(trans='log')
+    + pn.scale_y_continuous(trans='log')
+)
+
+graph.draw();
+```
+
+Output:
+
+![Sin título](https://github.com/mateosolinho/proyecto-final/assets/124877302/7cb20bef-3a9b-43d6-b50e-4907e3b51387)
+
+## Evaluando los resultados
+
+Para una evaluacion mas rigurosa es importante usar las metricas de evaluacion para entender:
+- Como de puros son los clusters
+- Como de alejados estan uno del otro
+
+Tambien tenemos que elegir el mejor numero de clusters y esto lo conseguimos con el famoso metodo del codo
+
+*Añadido evaluacion.py*
+
+Output:
+
+![Sin título](https://github.com/mateosolinho/proyecto-final/assets/124877302/0fbae6fc-bdb2-433b-893b-12ab03505990)
+
+Tenemos disponibles varias metricas para medir la calidad de los clusters que utilizan los datos de entrada y los grupos aprendidos
+
+Nos podemos aprovechar de esto para elegir el mejor numero de clusters utilizando el metodo del codo y buscando el outno de menor cambio de la metrica
