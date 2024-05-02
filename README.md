@@ -968,4 +968,151 @@ Output:
 
 El paso de elegir las variables es fundamental con el algoritmo de kmeans
 
+### 02/05
+
 ## Eligiendo y normalizando las variables II
+
+Kmeans depende de instancias, entonces es fundamental que las varaibles esten en la misma distancia
+
+Existen varias maneras de hacer esto, pero es muy importante aprovecharse de los pipelines para crear procesos mejores
+
+*Añadido visualizacion2.py*
+
+Variables followers y following
+
+```python
+graph = (
+    pn.ggplot(user_stats, pn.aes(x='followers', y='following', color='predictions_kmeans_5_scaler'))
+    + pn.geom_point()
+    + pn.scale_x_continuous(trans='log')
+    + pn.scale_y_continuous(trans='log')
+)
+
+graph.draw();
+```
+
+Output:
+
+![Sin título](https://github.com/mateosolinho/proyecto-final/assets/124877302/0a8a171b-f2d0-43c5-8649-d3822423bdd9)
+
+Variables followers y media
+
+```python
+graph = (
+    pn.ggplot(user_stats, pn.aes(x='followers', y='media', color='predictions_kmeans_5_scaler'))
+    + pn.geom_point()
+    + pn.scale_x_continuous(trans='log')
+    + pn.scale_y_continuous(trans='log')
+)
+
+graph.draw();
+```
+
+Output:
+
+![Sin título](https://github.com/mateosolinho/proyecto-final/assets/124877302/619dbc3f-a593-4dfc-b409-67525b174988)
+
+Variables media y following
+
+```python
+graph = (
+    pn.ggplot(user_stats, pn.aes(x='media', y='following', color='predictions_kmeans_5_scaler'))
+    + pn.geom_point()
+    + pn.scale_x_continuous(trans='log')
+    + pn.scale_y_continuous(trans='log')
+)
+
+graph.draw();
+```
+
+Output:
+
+![Sin título](https://github.com/mateosolinho/proyecto-final/assets/124877302/a1ec382b-41b9-40e5-b6e0-3ec1ab6c3fbe)
+
+
+## DBSCAN
+
+Kmeans tiene algunas debilidades, principalemente:
+- Tenemos que decidir cuantos grupos existen
+- Prefiere variables contiguas ante categoricas
+
+Dos alternativas populares:
+- DBSCAN
+- Clusterizacion jerarquica
+
+DBSCAN es u algoritmo potente que evita el problema de definir el numero de clusters
+
+Los resultados son similares a los del KMeans, pero ahora vemos que al incluir variables categóricas, también podemos distinguir grupos según si los tweets tienen o no retweets. Esto nos muestra cómo estas variables influyen en la agrupación de los datos junto con las numéricas, dándonos una visión más completa.
+
+![Sin título](https://github.com/mateosolinho/proyecto-final/assets/124877302/b3d810c9-5f15-4ae2-a536-212148c69827)
+
+Dengogram:
+
+*Añadido dendogram.py*
+
+Output:
+
+![Sin título](https://github.com/mateosolinho/proyecto-final/assets/124877302/8ada9a75-a7f6-4e37-8951-0febdb19f0b4)
+
+
+## Clusterizacion Grupos de Interes
+
+Uno de los usos principales de la clusterizacion es la deteccion de los grupos de interes
+
+Empezamos construyendo clusters con las variables de interes y hacemos un analisis posterior para entender los comportamientos que captamos
+
+Podemos incorporar estos grupos en procesos de negocio
+
+Este es un algoritmo que funciona de manera distinta a los otros que hemos visto hasta ahora
+
+## Reduccion de dimensiones PCA:
+
+La alta dimensionalidad es problematica por varios motivos:
+- Es dificil extraer conocimiento concreto
+- Modelos supervisados entrenando con muchas dimensiones son propensos a tener overfitting
+- La significancia de los resultados se reduce
+
+*Añadido pca.py*
+
+2 dimensiones
+
+```python
+fig, ax = model.biplot(n_feat=6, alpha_transparency=0.1, hotellingt2=True)
+ax.set_xlim([-5, 12])
+ax.set_ylim([-1, 12])
+fig
+```
+
+Ouput:
+
+![Sin título](https://github.com/mateosolinho/proyecto-final/assets/124877302/374d91f0-f9a2-4d14-a44d-b7a45e3cadb9)
+
+3 dimensiones
+
+```python
+fig, ax = model.biplot(n_feat=6, alpha_transparency=0.1, hotellingt2=True, d3=True)
+ax.set_xlim([-5, 12])
+ax.set_ylim([-1, 12])
+ax.set_zlim([-6, 8])
+fig
+```
+
+Output:
+
+![Sin título](https://github.com/mateosolinho/proyecto-final/assets/124877302/caf08288-c974-4007-b948-1d848eb0de3f)
+
+## T-SNE
+
+PCA es muy popular pero no es perfecto
+
+Los algoritmos de t-SNE y UMAP son alternativas mas avanzadas que tambien son muy populares
+
+Es comun primero aplicar un PCA para que se pueda ejecutar bien
+
+## Resumen
+
+El aprendizaje no supervisado no tiene en cuenta un target especifico, pero trabajamos con un objetivo concreto
+
+Scikit-learn es muy util para una gran parte de aprendizaje no supervisado debido a su framework y sintaxis comun
+
+La cluesterizacio busca grupos de datos comunes mientras la reduccion de dimensiones busca simplificar los datos
