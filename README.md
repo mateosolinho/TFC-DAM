@@ -1114,3 +1114,8 @@ El aprendizaje no supervisado no tiene en cuenta un target especifico, pero trab
 Scikit-learn es muy util para una gran parte de aprendizaje no supervisado debido a su framework y sintaxis comun
 
 La cluesterizacio busca grupos de datos comunes mientras la reduccion de dimensiones busca simplificar los datos
+
+***Examen Curso de Machine Learning no supervisado en Python***
+
+- **Intento 1 -> 12 aciertos**
+- **Intento 2 -> 18 aciertos** - Aprobado
