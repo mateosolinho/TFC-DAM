@@ -1114,3 +1114,99 @@ El aprendizaje no supervisado no tiene en cuenta un target especifico, pero trab
 Scikit-learn es muy util para una gran parte de aprendizaje no supervisado debido a su framework y sintaxis comun
 
 La cluesterizacio busca grupos de datos comunes mientras la reduccion de dimensiones busca simplificar los datos
+
+***Examen Curso de Machine Learning no supervisado en Python***
+
+- **Intento 1 -> 12 aciertos**
+- **Intento 2 -> 18 aciertos** - Aprobado
+
+### 03/05
+
+## Taller ML con clasificadores lineales en Python
+
+```pyhton
+graph = (
+    pn.ggplot(tweet_data, pn.aes(x='0', y='nlikes'))
+    + pn.geom_boxplot()
+    + pn.coord_cartesian(ylim=[0, tweet_data.nlikes.quantile(0.90)])
+    + pn.xlab('')
+)
+
+graph.draw();
+```
+
+Output:
+
+![Sin título](https://github.com/mateosolinho/proyecto-final/assets/124877302/8135e9b5-7706-459e-9f0d-a112bc8205a7)
+
+
+Dividimos los datos en train y test
+
+```pyhton
+train, test = sklearn.model_selection.train_test_split(tweet_data, train_size=0.7, random_state=0)
+
+train = train.reset_index(drop=True)
+test = test.reset_index(drop=True)
+
+print(train.shape)
+print(test.shape)
+```
+
+Output:
+
+```python
+(28406, 57)
+(12175, 57)
+```
+
+Grafico de seguidore sy probabilidad de popularidad por video
+
+```python
+train['video'] = train.video.astype(bool)
+
+graph = (
+    pn.ggplot(train, pn.aes(x='following', y='predictions_1', color='video'))
+    + pn.geom_line()
+    + pn.ylab('Probability of being popular')
+)
+
+graph.draw();
+```
+
+![Sin título](https://github.com/mateosolinho/proyecto-final/assets/124877302/5109e382-b0e5-4b5c-9f32-6c2b41c79a17)
+
+De esta manera podemos crear nuevas variables
+
+```python
+train['has_hashtags'] = (train.hashtags.str.len() > 2).astype(int)
+
+train['is_english'] = (train.language == 'en').astype(int)
+
+train['avg_likes'] = train.likes / train.tweets
+train['followers_per_tweet'] = train.followers / train.tweets
+
+train['is_reply'] = (train.reply_to.str.len() > 2).astype(int)
+
+potential_variables = [
+    'has_hashtags', 'is_english', 'avg_likes', 'followers_per_tweet', 'is_reply'
+]
+
+for variable in potential_variables:
+    print(f'For variable {variable}:')
+    print(train.groupby(target)[variable].agg(['mean', 'sem']))
+    print('\n')
+```
+
+La curva de precision recall es fundamental para entender los resultados y como se podrian aplicar a una problema real de negocio, la dibujamos utilizando scikit-learn.
+
+```pyhton
+c = (results.recall_diff >= 0)
+graph = (
+    pn.ggplot(results[c], pn.aes(x='recall', y='precision', color='prediction_number'))
+    + pn.geom_line(size=1.4)
+)
+
+graph.draw();
+```
+
+![Sin título](https://github.com/mateosolinho/proyecto-final/assets/124877302/b4fd6f14-3cbb-4ae8-97d2-0500d46a1a17)
