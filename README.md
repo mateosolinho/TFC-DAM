@@ -1210,3 +1210,248 @@ graph.draw();
 ```
 
 ![Sin título](https://github.com/mateosolinho/proyecto-final/assets/124877302/b4fd6f14-3cbb-4ae8-97d2-0500d46a1a17)
+
+## Taller ML con modelos basados en arboles en Python
+
+Empezamos entrenando un arbol de decision para entender que hay pro debajo de los arboles de decision
+
+```pyhton
+auc_train = sklearn.metrics.roc_auc_score(train[target], train[pred_col])
+auc_test = sklearn.metrics.roc_auc_score(test[target], test[pred_col])
+
+acc_train = sklearn.metrics.accuracy_score(train[target], train[pred_col].round())
+acc_test = sklearn.metrics.accuracy_score(test[target], test[pred_col].round())
+
+print(f'The auc in train is {auc_train:.3} and in test it is {auc_test:.3}, the accuracies are {acc_train:.1%} and {acc_test:.1%}')
+```
+
+Output:
+
+```python
+The auc in train is 0.995 and in test it is 0.853, the accuracies are 96.1% and 87.0%
+```
+En esta caso los resultados no parecen malos, el modelo ha podido incorporar casi todos los datos y producir un resultado bastante bueno
+
+```python
+feature_names = train.language.sort_values().unique().tolist() + numeric_variables
+
+plt.figure(figsize=(25, 12))
+sklearn.tree.plot_tree(
+    full_pipeline['classifier'], fontsize=12, feature_names=feature_names, class_names=[f'Under {cutoff}', f'Over {cutoff}'], max_depth=4, 
+    impurity=False, proportion=True, precision=2
+)
+plt.show()
+```
+
+Output:
+
+![Sin título](https://github.com/mateosolinho/proyecto-final/assets/124877302/caacb84d-02cd-40ba-b69d-3bb21effa6c3)
+
+```python
+graph_data = pd.DataFrame(
+    [(imp, variable) for imp, variable in zip(full_pipeline['classifier'].feature_importances_, feature_names)], 
+    columns=['importance', 'variable']
+).sort_values('importance', ascending=False)
+
+limit = 15
+graph = (
+    pn.ggplot(graph_data.head(limit), pn.aes(x='variable', y='importance')) 
+    + pn.geom_col()
+    + pn.coord_flip()
+    + pn.theme(figure_size=(7, 5))
+    + pn.scale_x_discrete(limits=graph_data.head(limit).variable.unique()[::-1])
+)
+
+graph.draw();
+```
+
+Output:
+
+![Sin título](https://github.com/mateosolinho/proyecto-final/assets/124877302/9c920c76-970e-4ec2-8780-084a02932186)
+
+Podemos ver que los followers por tweet es un feature muy importante
+
+Ahora vamos a intentar hacer lo que hemos hecho, pero utilizando 2 modelos más complejos, RandomForest y XGBoost.
+
+```python
+The auc in train is 0.938 and in test it is 0.936, the accuracies are 88.4% and 87.8%
+```
+
+En este caso conseguimos una mejora muy ligera, y ademas hemos utilizado los mismos parametros para mejorar un poco el overfitting
+
+```pyhton
+graph_data = pd.DataFrame(
+    [(imp, variable) for imp, variable in zip(full_pipeline['classifier'].feature_importances_, feature_names)], 
+    columns=['importance', 'variable']
+).sort_values('importance', ascending=False)
+
+limit = 20
+graph = (
+    pn.ggplot(graph_data.head(limit), pn.aes(x='variable', y='importance')) 
+    + pn.geom_col()
+    + pn.coord_flip()
+    + pn.theme(figure_size=(7, 5))
+    + pn.scale_x_discrete(limits=graph_data.head(limit).variable.unique()[::-1])
+)
+
+graph.draw();
+```
+
+Output:
+
+![Sin título](https://github.com/mateosolinho/proyecto-final/assets/124877302/9d404f60-0604-4662-a9ec-c53f1fc4fa95)
+
+Podemos ver que los resultados son sim ilares, pero los resultados son mucho menos extremos que los anteriores
+
+![Sin título](https://github.com/mateosolinho/proyecto-final/assets/124877302/b9886380-beb6-4de4-8671-4c343dc7593e)
+
+De nuevo hemos conseguido una mejora significativa pero el over training es mas exagerado. La importancia de las variables ha cambiado, otra vez siendo mas extremo.
+
+Si optimizamos los pipelines y el metodo de train podemos conseguir mejorar tanto de rendimiento como de accuracies bastante significativas
+
+```python
+The auc in train is 0.963 and in test it is 0.948, the accuracies are 90.8% and 89.2%
+```
+
+![Sin título](https://github.com/mateosolinho/proyecto-final/assets/124877302/34b4d244-17a3-4d5f-8005-0d7f588aeb60)
+
+En esta grafica podemos apreciar unos resultados bastante mejores para random forest y XGBoost, conseguimos un 0.4 de recall con 100% de precision
+
+## Taller Reduccion de dimensionalidad para ML en Python
+
+El PCA es una de las grandes tecnicas para hacer reduccion de dimensiones
+
+```python
+pca_pipeline = Pipeline(
+    [
+        ('scaler', preprocessing.StandardScaler()),
+        ('pca', PCA(random_state=0))
+    ]
+)
+
+pca_pipeline.fit(user_stats[variables])
+
+transformed_data = pd.DataFrame(pca_pipeline.transform(user_stats[variables]))
+transformed_data.columns = [f'component_{i+1}' for i in range(transformed_data.shape[1])]
+
+graph_data = pd.DataFrame(pca_pipeline['pca'].explained_variance_ratio_.cumsum(), columns=['explained_variance']).reset_index()
+
+graph = pn.ggplot(graph_data, pn.aes(x='index', y='explained_variance')) + pn.geom_col() + pn.xlab('Component') + pn.scale_y_continuous(labels=percent_format())
+graph.draw();
+```
+
+Output:
+
+![Sin título](https://github.com/mateosolinho/proyecto-final/assets/124877302/882544e5-fbd1-45f4-8fe6-e53ffeac6dc7)
+
+Cuando no especificamos un numero de componentes el PCA devuelve todos los posibles
+
+```python
+limit_x = transformed_data.component_1.quantile(0.95)
+limit_y = transformed_data.component_2.quantile(0.95)
+
+condition = (transformed_data.component_1 < limit_x) & (transformed_data.component_2 < limit_y)
+
+graph = (
+    pn.ggplot(transformed_data[condition], pn.aes(x='component_1', y='component_2'))
+    + pn.geom_point()
+)
+
+graph.draw();
+```
+
+Output:
+
+![Sin título](https://github.com/mateosolinho/proyecto-final/assets/124877302/a70c950c-3aaf-4363-90fc-f516f15438fb)
+
+```python
+limit_x = transformed_data.component_1.quantile(0.95)
+limit_y = transformed_data.component_2.quantile(0.95)
+limit_z = transformed_data.component_3.quantile(0.95)
+
+condition = (transformed_data.component_1 < limit_x) & (transformed_data.component_2 < limit_y) & (transformed_data.component_3 < limit_z)
+
+graph = (
+    pn.ggplot(transformed_data[condition], pn.aes(x='component_1', y='component_2', color='component_3'))
+    + pn.geom_point()
+)
+
+graph.draw();
+```
+
+Output:
+
+![Sin título](https://github.com/mateosolinho/proyecto-final/assets/124877302/8a8d4773-fd3f-45d2-bce4-d93a179a1028)
+
+Asi podemos visualizar los datos en diferentes componentes en un grafico
+Podemos ver que algunos de los datos se encuentran en los extremos de estos componentes
+
+Para saber la relacion que tienen nuestros compoentes con las variables iniciales usamos Biplot
+
+```python
+fig, ax = model.biplot(n_feat=6, alpha_transparency=0.1, hotellingt2=True, visible=False)
+ax.set_xlim([-2, 6])
+ax.set_ylim([-1, 6])
+fig.set_visible(True)
+```
+
+Output:
+
+![Sin título](https://github.com/mateosolinho/proyecto-final/assets/124877302/1fe0e379-243c-47f0-af4e-15cf18088f40)
+
+
+```python
+fig, ax = model.biplot(n_feat=6, alpha_transparency=0.1, hotellingt2=True, d3=True, visible=False)
+ax.set_xlim([-2, 6])
+ax.set_ylim([-1, 4])
+ax.set_zlim([-6, 5])
+fig.set_visible(True)
+```
+
+![Sin título](https://github.com/mateosolinho/proyecto-final/assets/124877302/491684c4-5451-464d-a6c3-aaa3893603a5)
+
+Las flechas nos muestran las variables iniciales y podemos entender que cietas variables tienen una correlacion alta con los componentes
+
+En la ultima imagen podemos ver lo mismo pero en 3D, nuestros tres primeros componentes se definen por, el numero de retweets, el numero de respuestas de media, el numero de tweets
+
+Esto es interesante ya que corresponde con los 3 tipos de tweet diferente que se pueden hacer, por lo que entendemos que nuestro conjunto de usuarios se explican principalmente por estas variables
+
+Podemos aprovechar esta reduccion de dimensxiones para hacer un clustering de datos
+
+```python
+graph = (
+    pn.ggplot(transformed_data[transformed_data.predictions_clusters != '-1'], pn.aes(x='component_1', y='component_2', color='predictions_clusters'))
+    + pn.geom_point()
+)
+
+graph.draw();
+```
+
+Output:
+
+![Sin título](https://github.com/mateosolinho/proyecto-final/assets/124877302/eeeaca18-85d6-4531-8b46-65344acb6645)
+
+En esta imagen podemos ver que el algoritmo ha conseguido identificar unos clusters bastante claros, hay una gran masa de usuarios en el centro y luego tenemos grupos de usuarios en los diferentes lados
+Por otra parte los puntos rojos son que no pertenecen a ningun grupo en especifico
+
+```python
+prct_changes = ((transformed_data.groupby('predictions_clusters')[vis_vars].mean() - transformed_data[vis_vars].mean()) / transformed_data[vis_vars].mean()).reset_index()
+graph_data = pd.melt(prct_changes, 'predictions_clusters')
+
+graph = (
+    pn.ggplot(graph_data[graph_data.predictions_clusters != '-1'], pn.aes(x='predictions_clusters', y='value', fill='variable'))
+    + pn.geom_col(position='dodge')
+    + pn.theme(figure_size=(10, 5))
+    + pn.scale_y_continuous(labels=percent_format())
+    + pn.scale_x_discrete(labels=[str(i) for i in range(graph_data[graph_data.predictions_clusters != '-1'].predictions_clusters.nunique())])
+    + pn.ylab('Percentage increase over the global average')
+)
+
+graph.draw();
+```
+
+Output:
+
+![Sin título](https://github.com/mateosolinho/proyecto-final/assets/124877302/733972b7-4918-40be-8d20-f65bf81749e6)
+
+Observando este grafico, podemos ver que muchos de los clusters tienen un valor muy fuerte en alguna variable y ademas que mucho tambien tienen una mezcla de cosas unicas, como el 1 que tiene un numero regular de todo pero con mas replies
