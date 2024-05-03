@@ -1455,3 +1455,8 @@ Output:
 ![Sin título](https://github.com/mateosolinho/proyecto-final/assets/124877302/733972b7-4918-40be-8d20-f65bf81749e6)
 
 Observando este grafico, podemos ver que muchos de los clusters tienen un valor muy fuerte en alguna variable y ademas que mucho tambien tienen una mezcla de cosas unicas, como el 1 que tiene un numero regular de todo pero con mas replies
+
+# Resumen
+
+Para finalizar con el pryecto final y ambas carreras de openwebinars en mi opinion la Carrera que mas me ha gustado y mas interesante me ha parecido ha sido la de Machine Learning con Python
+Por otra parte ambas me ha parecido que tenian contenido dificil de comprender pero una buena base para comenzar y entender bien la mayoria de contenidos, sin embargo en el caso de la de Machine Learning a mi parecer hay terminos mas complejos y ha habido veces que algunas cosas no las acababa de entender del todo.
