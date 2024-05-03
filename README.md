@@ -1210,3 +1210,109 @@ graph.draw();
 ```
 
 ![Sin título](https://github.com/mateosolinho/proyecto-final/assets/124877302/b4fd6f14-3cbb-4ae8-97d2-0500d46a1a17)
+
+## Taller ML con modelos basados en arboles en Python
+
+Empezamos entrenando un arbol de decision para entender que hay pro debajo de los arboles de decision
+
+```pyhton
+auc_train = sklearn.metrics.roc_auc_score(train[target], train[pred_col])
+auc_test = sklearn.metrics.roc_auc_score(test[target], test[pred_col])
+
+acc_train = sklearn.metrics.accuracy_score(train[target], train[pred_col].round())
+acc_test = sklearn.metrics.accuracy_score(test[target], test[pred_col].round())
+
+print(f'The auc in train is {auc_train:.3} and in test it is {auc_test:.3}, the accuracies are {acc_train:.1%} and {acc_test:.1%}')
+```
+
+Output:
+
+```python
+The auc in train is 0.995 and in test it is 0.853, the accuracies are 96.1% and 87.0%
+```
+En esta caso los resultados no parecen malos, el modelo ha podido incorporar casi todos los datos y producir un resultado bastante bueno
+
+```python
+feature_names = train.language.sort_values().unique().tolist() + numeric_variables
+
+plt.figure(figsize=(25, 12))
+sklearn.tree.plot_tree(
+    full_pipeline['classifier'], fontsize=12, feature_names=feature_names, class_names=[f'Under {cutoff}', f'Over {cutoff}'], max_depth=4, 
+    impurity=False, proportion=True, precision=2
+)
+plt.show()
+```
+
+Output:
+
+![Sin título](https://github.com/mateosolinho/proyecto-final/assets/124877302/caacb84d-02cd-40ba-b69d-3bb21effa6c3)
+
+```python
+graph_data = pd.DataFrame(
+    [(imp, variable) for imp, variable in zip(full_pipeline['classifier'].feature_importances_, feature_names)], 
+    columns=['importance', 'variable']
+).sort_values('importance', ascending=False)
+
+limit = 15
+graph = (
+    pn.ggplot(graph_data.head(limit), pn.aes(x='variable', y='importance')) 
+    + pn.geom_col()
+    + pn.coord_flip()
+    + pn.theme(figure_size=(7, 5))
+    + pn.scale_x_discrete(limits=graph_data.head(limit).variable.unique()[::-1])
+)
+
+graph.draw();
+```
+
+Output:
+
+![Sin título](https://github.com/mateosolinho/proyecto-final/assets/124877302/9c920c76-970e-4ec2-8780-084a02932186)
+
+Podemos ver que los followers por tweet es un feature muy importante
+
+Ahora vamos a intentar hacer lo que hemos hecho, pero utilizando 2 modelos más complejos, RandomForest y XGBoost.
+
+```python
+The auc in train is 0.938 and in test it is 0.936, the accuracies are 88.4% and 87.8%
+```
+
+En este caso conseguimos una mejora muy ligera, y ademas hemos utilizado los mismos parametros para mejorar un poco el overfitting
+
+```pyhton
+graph_data = pd.DataFrame(
+    [(imp, variable) for imp, variable in zip(full_pipeline['classifier'].feature_importances_, feature_names)], 
+    columns=['importance', 'variable']
+).sort_values('importance', ascending=False)
+
+limit = 20
+graph = (
+    pn.ggplot(graph_data.head(limit), pn.aes(x='variable', y='importance')) 
+    + pn.geom_col()
+    + pn.coord_flip()
+    + pn.theme(figure_size=(7, 5))
+    + pn.scale_x_discrete(limits=graph_data.head(limit).variable.unique()[::-1])
+)
+
+graph.draw();
+```
+
+Output:
+
+![Sin título](https://github.com/mateosolinho/proyecto-final/assets/124877302/9d404f60-0604-4662-a9ec-c53f1fc4fa95)
+
+Podemos ver que los resultados son sim ilares, pero los resultados son mucho menos extremos que los anteriores
+
+![Sin título](https://github.com/mateosolinho/proyecto-final/assets/124877302/b9886380-beb6-4de4-8671-4c343dc7593e)
+
+De nuevo hemos conseguido una mejora significativa pero el over training es mas exagerado. La importancia de las variables ha cambiado, otra vez siendo mas extremo.
+
+Si optimizamos los pipelines y el metodo de train podemos conseguir mejorar tanto de rendimiento como de accuracies bastante significativas
+
+```python
+The auc in train is 0.963 and in test it is 0.948, the accuracies are 90.8% and 89.2%
+```
+
+![Sin título](https://github.com/mateosolinho/proyecto-final/assets/124877302/34b4d244-17a3-4d5f-8005-0d7f588aeb60)
+
+En esta grafica podemos apreciar unos resultados bastante mejores para random forest y XGBoost, conseguimos un 0.4 de recall con 100% de precision
