@@ -7,6 +7,7 @@ import sklearn.compose
 import sklearn.ensemble
 import numpy as np
 from matplotlib import pyplot as plt
+
 data_location = 'tweet_and_user_data.csv'
 
 pd.options.display.max_columns = 500
