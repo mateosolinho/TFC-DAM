@@ -459,7 +459,7 @@ Un custom hook en React es una función que te permite encapsular la lógica de 
 
 - **Intento 1 -> 12 aciertos**
 - **Intento 2 -> 16 aciertos** - Aprobado
-- 
+  
 ## <ins> Semana 24/04 - 01/05 </ins>
 
 ### 24/04
@@ -1458,5 +1458,5 @@ Observando este grafico, podemos ver que muchos de los clusters tienen un valor 
 
 # Resumen
 
-Para finalizar con el pryecto final y ambas carreras de openwebinars en mi opinion la Carrera que mas me ha gustado y mas interesante me ha parecido ha sido la de Machine Learning con Python
-Por otra parte ambas me ha parecido que tenian contenido dificil de comprender pero una buena base para comenzar y entender bien la mayoria de contenidos, sin embargo en el caso de la de Machine Learning a mi parecer hay terminos mas complejos y ha habido veces que algunas cosas no las acababa de entender del todo.
+Para finalizar con el proyecto final y ambas carreras de openwebinars, en mi opinion la Carrera que mas me ha gustado y mas interesante me ha parecido ha sido la de Machine Learning con Python
+Por otra parte ambas me ha parecido que tenian contenido dificil de comprender pero una buena base para comenzar y entender bien la mayoria de contenidos, sin embargo en el caso de la de Machine Learning a mi parecer hay terminos mas complejos y ha habido veces que algunas cosas no las acababa de entender del todo
